@@ -5,7 +5,119 @@
   <link rel="stylesheet" type="text/css" href="/style.css">
   
   <script>
+    const handleResponse = async (response, form) => {
+      const content = document.querySelector('#content');
 
+      switch(response.status) {
+        case 200:
+          content.innerHTML = `<b>Success</b>`;
+          break;
+        case 201:
+          content.innerHTML = `<b>Created</b>`;
+          break;
+        case 204:
+          content.innerHTML = `<b>Updated (No Content)</b>`;
+          break;
+        case 400:
+          content.innerHTML = `<b>Bad Request</b>`;
+          break;
+        case 404:
+          content.innerHTML = `<b>Not Found</b>`;
+          break;
+        default:
+          content.innerHTML = `Error code not implemented by client`;
+          break;
+      }
+
+      const method = document.querySelector('#methodSelect');
+      
+      if(method.value == "get")
+      {
+        const urlField = document.querySelector('#urlField');
+        if(form.method == "post")
+        {
+          response.text().then((resText) => {
+            let parsedResponse = JSON.parse(resText);
+            console.log(parsedResponse);
+            content.innerHTML += `<p>${parsedResponse.message}</p>`;
+          });
+        }
+        else if(form.method == "get"){
+          response.text().then((resText) => {
+            let parsedResponse = JSON.parse(resText);
+            let parsedUsers = JSON.stringify(parsedResponse.users);
+            console.log(parsedResponse);
+
+            if(urlField.value == "/getUsers"){
+              content.innerHTML += `<p>${parsedUsers}</p>`;
+            }
+            else if(urlField.value == "/notReal"){
+              content.innerHTML += `<p>${parsedResponse.message}</p>`;
+            }
+          });
+        }
+      }
+    };
+
+    const sendPost = async (nameForm)=> {
+      const nameAction = nameForm.getAttribute('action');
+      const nameMethod = nameForm.getAttribute('method');
+
+      const nameField = nameForm.querySelector('#nameField');
+      const ageFiled = nameForm.querySelector('#ageField');
+
+      const formData = `name=${nameField.value}&age=${ageField.value}`;
+
+      let response = await fetch(nameAction, {
+        method: nameMethod,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept' : 'application/json',
+        },
+        body: formData,
+      });
+
+      handleResponse(response, nameForm);
+    };
+
+    const getPost = async (userForm) => {
+      const nameAction = userForm.getAttribute('action');
+      const nameMethod = userForm.getAttribute('method');
+
+      const userField = document.querySelector('#urlField');
+
+      let response = await fetch(userField.value, {
+        method: nameMethod,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json',
+        },
+      });
+
+      handleResponse(response, userForm);
+    };
+
+    const init = () => {
+      const nameForm = document.querySelector('#nameForm');
+      const userForm = document.querySelector('#userForm');
+
+      const addUser = (e) => {
+        e.preventDefault();
+        sendPost(nameForm);
+        return false;
+      }
+
+      const getUsers = (e) => {
+        e.preventDefault();
+        getPost(userForm);
+        return false;
+      }
+
+      nameForm.addEventListener('submit', addUser);
+      userForm.addEventListener('submit', getUsers);
+    };
+
+    window.onload = init;
   </script>
 </head>
 <body>
