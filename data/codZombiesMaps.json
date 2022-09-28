@@ -1,0 +1,123 @@
+{
+    "maps" : [
+        {
+            "map-name": "Nacht der Untoten (World at War)",
+            "name-translation": "German - Night of the Dead",
+            "location": "Abandoned Airfield, German Occupied Europe",
+            "date": "June 4th, 1945",
+            "multiplayer-map": "Airfield",
+            "enemies": "Zombies",
+            "easter-eggs": "",
+            "perks": "",
+            "wonder-weapons": ""
+        },
+        
+        {
+            "map-name": "Verrückt (World at War)",
+            "name-translation": "German - Crazy / Insane",
+            "location": "Wittenau Sanatorium, Berlin",
+            "date": "September 6th, 1945",
+            "multiplayer-map": "Asylum",
+            "enemies": "Zombies",
+            "easter-eggs": "",
+            "perks": "Juggernog (Debut), Quick Revive (Debut), Speed Cola (debut), Double Tap Root Beer (Debut)",
+            "wonder-weapons": ""
+        }, 
+
+        {
+            "map-name": "Shi No Numa (World at War)",
+            "name-translation": "Japanese - Swamp of Death",
+            "location": "Rising Sun Facility, Empire of Japan",
+            "date": "October 21th, 1945",
+            "multiplayer-map": "Knee Deep",
+            "enemies": "Zombies, Hellhounds",
+            "easter-eggs": "",
+            "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer",
+            "wonder-weapons": "Wunderwaffe DG-2 (Debut)"
+        },
+
+        {
+            "map-name": "Der Reise (World at War)",
+            "name-translation": "German - The Giant",
+            "location": "Waffenfabrik Der Riese, Lower Silesia",
+            "date": "October 28th, 1945",
+            "multiplayer-map": "Nightfire",
+            "enemies": "Zombies, Hellhounds",
+            "easter-eggs": "Fly Trap",
+            "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer",
+            "wonder-weapons": "Wunderwaffe DG-2"
+        },
+
+        {
+            "map-name": "Kino der Toten (Black Ops 1)",
+            "name-translation": "German - Cinema/Theater of the Dead",
+            "location": "Deutsches sol Kino, West Berlin",
+            "date": "October 28th, 1963",
+            "multiplayer-map": "N/A",
+            "enemies": "Zombies, Hellhounds, Nova Crawlers",
+            "easter-eggs": "N/A",
+            "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer",
+            "wonder-weapons": "Wunderwaffe DG-2"
+        },
+
+        {
+            "map-name": "Five (Black Ops 1)",
+            "name-translation": "N/A",
+            "location": "The Pentagon, Arlington Virginia",
+            "date": "November 6th, 1963",
+            "multiplayer-map": "N/A",
+            "enemies": "Zombies, Hellhounds, The Pentagon Thief",
+            "easter-eggs": "N/A",
+            "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer",
+            "wonder-weapons": "Winter's Howl (Debut)"
+        },
+
+        {
+            "map-name": "Ascension (Black Ops 1)",
+            "name-translation": "N/A",
+            "location": "Baikonur Cosmodrome, Kyzylorda, Kazakh Soviet Socialist Republic",
+            "date": "November 6th, 1963",
+            "multiplayer-map": "Launch",
+            "enemies": "Zombies, Space Monkeys",
+            "easter-eggs": "N/A",
+            "perks": "Juggernog, Quick Revive, Speed Cola, PhD Flopper (Debut), Stamin-Up (Debut)",
+            "wonder-weapons": "Winter's Howl"
+        },
+
+        {
+            "map-name": "Call of the Dead (Black Ops 1)",
+            "name-translation": "N/A",
+            "location": "Near Podkamennaya Tunguska River, Krasnoyarsk Krai, Russian Federation",
+            "date": "March 7th, 2011",
+            "multiplayer-map": "N/A",
+            "enemies": "Zombies, Electric Zombies, George Romero",
+            "easter-eggs": "Stand-In",
+            "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer, PhD Flopper, Stamin-Up, Deadshot Daiquiri (Debut)",
+            "wonder-weapons": "V-R11 (Debut)"
+        },
+
+        {
+            "map-name": "Shangri-La (Black Ops 1)",
+            "name-translation": "Paradise",
+            "location": "A mountain range somewhere in Himalayas",
+            "date": "April 25th, 1956",
+            "multiplayer-map": "N/A",
+            "enemies": "Zombies, Zombie Monkeys, Napalm Zombies, Shrieker Zombies",
+            "easter-eggs": "Time Travel Will Tell",
+            "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer, PhD Flopper, Stamin-Up, Deadshot Daiquiri",
+            "wonder-weapons": "31-79 JGb215 / Shrink Ray (Debut)"
+        },
+
+        {
+            "map-name": "Moon (Black Ops 1)",
+            "name-translation": "N/A",
+            "location": "Area 51, Nevada / Griffin Station",
+            "date": "October 13th, 2025",
+            "multiplayer-map": "Portion of Hangar 18 and Remnant",
+            "enemies": "Zombies, Hellhounds, Nova Crawlers, The Astronaut",
+            "easter-eggs": "Richtofen's Grand Scheme",
+            "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer, PhD Flopper, Stamin-Up, Deadshot Daiquiri",
+            "wonder-weapons": "Wave Gun (Debut)"
+        }
+    ]
+}

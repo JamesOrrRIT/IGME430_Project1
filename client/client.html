@@ -64,7 +64,7 @@
       const nameMethod = nameForm.getAttribute('method');
 
       const nameField = nameForm.querySelector('#nameField');
-      const ageFiled = nameForm.querySelector('#ageField');
+      const ageField = nameForm.querySelector('#ageField');
 
       const formData = `name=${nameField.value}&age=${ageField.value}`;
 
@@ -101,6 +101,8 @@
       const nameForm = document.querySelector('#nameForm');
       const userForm = document.querySelector('#userForm');
 
+      const mapForm = document.querySelector('#mapForm');
+
       const addUser = (e) => {
         e.preventDefault();
         sendPost(nameForm);
@@ -111,6 +113,10 @@
         e.preventDefault();
         getPost(userForm);
         return false;
+      }
+
+      const searchMaps = (e) => {
+        e.preventDefault();
       }
 
       nameForm.addEventListener('submit', addUser);
@@ -130,6 +136,7 @@
       <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
       <input type="submit" value="Add User" />
     </form>
+
     <form id="userForm" action="/getUsers" method="get">
       <select id='urlField'>
         <option value='/getUsers'>/getUsers</option>
@@ -140,6 +147,49 @@
         <option value="head">HEAD</option>
       </select>
       <input type="submit" value="Get User" />
+    </form>
+
+    <form id="mapForm">
+      <h3>Call of Duty Zombie Map Loader</h3>
+      <label for="searchIndex">Search for a map by it's:</label>
+      <select id="searchIndex">
+        <option value="map-name">Name</option>
+        <option value="enemies">Enemies</option>
+        <option value="easter-eggs">Easter Eggs</option>
+        <option value="perks">Perks</option>
+        <option value="wonder-weapons">Wonder Weapon</option>
+      </select>
+
+      <input id="mapField" type="text">
+      <input type="submit" value="Search">
+    </form>
+
+    <form id="searchResults">
+      <section id="buttons">
+        <input type="submit" value="Prev">
+        <input type="submit" value="Next">
+      </section>
+    </form>
+    
+    <form id="instructions">
+      <h3>This form is going to be used to load a JSON file containing data on maps from the Call of Duty Zombie series. The file lists off multiple maps from throughout the games and various aspects about them. I will attempt to do the following with this:</h3>
+      <ul>
+        <li>Parse the file and break down each map based on what the user wants to look for.</li>
+        <li>The search is done with a dropdown menu that will look through a designated component (name, enemy types, etc.)</li>
+        <li>I will attempt to carry over the buttons from my other API projects which will display one search at a time and the user can scroll through them with a 'prev' and 'next' button.</li>
+      </ul>
+
+      <h3>This is how I will use the status codes:</h3>
+      <ul>
+        <li>200: Retieve any saved maps added to the array</li>
+        <li>201: Called when the map is added to the array when it is first searched</li>
+        <li>204: Called when the map selected is already added to the array</li>
+        <li>400: Called when the search paramter is empty</li>
+        <li>404: Called when the server can't return what was searched</li>
+        <li>500 (if necessary): If the server encounters a situation it doesn't know how to handle</li>
+      </ul>
+
+      <h3>Try and add a way for the user to add data into the saved data</h3>
     </form>
   </section>
   <section id="content">

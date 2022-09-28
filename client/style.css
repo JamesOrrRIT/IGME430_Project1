@@ -19,3 +19,26 @@ html, body {
   font-size: 2em;
   text-align: center;
 }
+
+#instructions {
+  margin-top: 200px;
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: left;
+}
+
+#mapForm {
+  margin-top: 200px;
+}
+
+#searchResults {
+  border: 2px solid black;
+  min-height: 50px;
+  margin-top: 25px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+#buttons {
+  margin-top: 10px;
+}

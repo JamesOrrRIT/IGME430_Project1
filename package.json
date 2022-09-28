@@ -1,23 +1,24 @@
 {
-  "name": "http-api-assignment-ii",
+  "name": "IGME430_Project1",
   "version": "1.0.0",
-  "description": "The second api assignment",
+  "description": "The first project",
   "main": "node ./src/server.js",
   "scripts": {
     "start": "node ./src/server.js",
     "pretest": "eslint ./src --fix",
-    "test": "echo \"Tests complete\""
+    "test": "echo \"Tests complete\"",
+    "nodemon": "nodemon -e js,html,css --watch ./src --watch ./client ./src/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JamesOrrRIT/http-api-assignment-ii.git"
+    "url": "git+https://github.com/JamesOrrRIT/IGME430_Project1.git"
   },
   "author": "James Orr",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/JamesOrrRIT/http-api-assignment-ii/issues"
+    "url": "https://github.com/JamesOrrRIT/IGME430_Project1/issues"
   },
-  "homepage": "https://github.com/JamesOrrRIT/http-api-assignment-ii#readme",
+  "homepage": "https://github.com/JamesOrrRIT/IGME430_Project1#readme",
   "devDependencies": {
     "eslint": "^8.23.1",
     "eslint-config-airbnb": "^19.0.4",

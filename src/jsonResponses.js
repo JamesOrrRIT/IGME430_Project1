@@ -1,4 +1,4 @@
-const users = {};
+const savedMaps = {};
 
 //Function to respond to the json object with the request, response, status code, and object
 const respondJSON = (request, response, status, object) => {
@@ -16,7 +16,7 @@ const respondJSONMeta = (request, response, status) => {
 //Return the user object as json
 const getUsers = (request, response) => {
     const responseJSON = {
-        users,
+        savedMaps,
     };
 
     respondJSON(request, response, 200, responseJSON);
@@ -31,7 +31,7 @@ const addUser = (request, response, body) => {
 
     //Check if both fields are filled in
     //Return with an error of 400 if one or both are empty
-    if(!body.name || !body.age) {
+    if(!savedMaps.name || !savedMaps.age) {
         response.id = 'missingParams';
         return respondJSON(request, response, 400, responseJSON);
     }
@@ -40,14 +40,14 @@ const addUser = (request, response, body) => {
     let responseCode = 204;
 
     //If the user doesn't exist, set a new code and create an empty user
-    if(!users[body.name]) {
+    if(!savedMaps[body.name]) {
         responseCode = 201;
-        users[body.name] = {};
+        savedMaps[body.name] = {};
     }
 
     //Add the fields for this user
-    users[body.name].name = body.name;
-    users[body.name].age = body.age;
+    savedMaps[body.name].name = savedMaps.name;
+    savedMaps[body.name].age = savedMaps.age;
 
     //If the response is create, we create a message
     if(responseCode === 201)
