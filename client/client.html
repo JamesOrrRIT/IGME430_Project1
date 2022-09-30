@@ -97,6 +97,25 @@
       handleResponse(response, userForm);
     };
 
+    const searchFor = async (mapForm) => {
+      const nameAction = mapForm.getAttribute('action');
+      const nameMethod = mapForm.getAttribute('method');
+
+      const searchType = mapForm.querySelector('#searchIndex');
+      const searchText = mapForm.querySelector('#mapField');
+
+      const url = `${nameAction}?type=${searchType.value}&input=${searchText.value}`;
+
+      let response = await fetch(url, {
+        method: nameMethod,
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
+
+      handleResponse(response, mapForm);
+    }
+
     const init = () => {
       const nameForm = document.querySelector('#nameForm');
       const userForm = document.querySelector('#userForm');
@@ -117,10 +136,17 @@
 
       const searchMaps = (e) => {
         e.preventDefault();
+        console.log("Works so far");
+        searchFor(mapForm);
+        //console.log(mapForm);
+        //console.log(document.querySelector('#searchIndex').value);
+        //console.log(document.querySelector('#mapField').value);
+        return false;
       }
 
       nameForm.addEventListener('submit', addUser);
       userForm.addEventListener('submit', getUsers);
+      mapForm.addEventListener('submit', searchMaps);
     };
 
     window.onload = init;
@@ -149,7 +175,7 @@
       <input type="submit" value="Get User" />
     </form>
 
-    <form id="mapForm">
+    <form id="mapForm" action="/searchMaps" method="post">
       <h3>Call of Duty Zombie Map Loader</h3>
       <label for="searchIndex">Search for a map by it's:</label>
       <select id="searchIndex">
@@ -169,6 +195,16 @@
         <input type="submit" value="Prev">
         <input type="submit" value="Next">
       </section>
+
+      <section id="searchDisplay">
+        <h3>Loaded data will be displayed here in</h3>
+      </section>
+
+      <form id="comment">
+        <label for="commentField">Have something to say about the map? Add a comment: </label>
+        <input id="commentField" type="text">
+        <input type="submit" value="Comment">
+      </form>
     </form>
     
     <form id="instructions">

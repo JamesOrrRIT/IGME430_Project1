@@ -1,3 +1,7 @@
+const fs = require('fs');
+const mapData = JSON.parse(fs.readFileSync(`${__dirname}/../data/codZombiesMaps.json`))["maps"];
+
+const searchedMaps = {};
 const savedMaps = {};
 
 //Function to respond to the json object with the request, response, status code, and object
@@ -69,9 +73,35 @@ const notReal = (request, response) => {
     respondJSON(request, response, 404, responseJSON);
 };
 
+//Search for the data accordingly
+const searchMaps = (request, response, params) => {
+    const responseJSON = {
+        message: mapData,
+    };
+
+    let responseCode = 204;
+
+    return respondJSON(request, response, responseCode, responseJSON);
+};
+
+//Adds a comment to the selected map
+const commentMap = (request, response) => {
+
+}
+
+//Special functions to cycle between the data shown
+const getPrev = (request, response) => {
+
+};
+
+const getNext = (request, response) => {
+
+};
+
 //Set out the functions for public use
 module.exports = {
     addUser,
     getUsers,
     notReal,
+    searchMaps,
 };

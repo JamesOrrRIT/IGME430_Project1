@@ -34,18 +34,25 @@ const handlePost = (request, response, parsedUrl) => {
 };
 
 const handleGet = (request, response, parsedUrl) => {
-    if (parsedUrl.pathname === '/') {
-        htmlHandler.getIndex(request, response);
-    }
-    else if (parsedUrl.pathname === '/style.css') {
-        htmlHandler.getCSS(request, response);
-    } 
-    else if (parsedUrl.pathname === '/getUsers') {
-        jsonHandler.getUsers(request, response);
-    } 
-    else {
-        jsonHandler.notReal(request, response);
-    } 
+  console.log(parsedUrl);
+  const queryParams = query.parse(parsedUrl.query);
+  console.log(queryParams);
+
+  if (parsedUrl.pathname === '/') {
+    htmlHandler.getIndex(request, response);
+  }
+  else if (parsedUrl.pathname === '/style.css') {
+    htmlHandler.getCSS(request, response);
+  } 
+  else if (parsedUrl.pathname === '/getUsers') {
+    jsonHandler.getUsers(request, response);
+  } 
+  else if (parsedUrl.pathname === '/searchMaps') {
+    jsonHandler.searchMaps(request, response);
+  }
+  else {
+    jsonHandler.notReal(request, response);
+  } 
 };
 
 const onRequest = (request, response) => {
