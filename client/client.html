@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Our simple HTTP server</title>
+  <title>jpo3042 Project 1</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
   
   <script>
@@ -45,7 +45,7 @@
         else if(form.method == "get"){
           response.text().then((resText) => {
             let parsedResponse = JSON.parse(resText);
-            let parsedUsers = JSON.stringify(parsedResponse.users);
+            let parsedUsers = JSON.stringify(parsedResponse);
             console.log(parsedResponse);
 
             if(urlField.value == "/getUsers"){
@@ -175,7 +175,7 @@
       <input type="submit" value="Get User" />
     </form>
 
-    <form id="mapForm" action="/searchMaps" method="post">
+    <form id="mapForm" action="/searchMaps" method="get">
       <h3>Call of Duty Zombie Map Loader</h3>
       <label for="searchIndex">Search for a map by it's:</label>
       <select id="searchIndex">

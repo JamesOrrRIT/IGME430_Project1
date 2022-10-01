@@ -48,7 +48,7 @@ const handleGet = (request, response, parsedUrl) => {
     jsonHandler.getUsers(request, response);
   } 
   else if (parsedUrl.pathname === '/searchMaps') {
-    jsonHandler.searchMaps(request, response);
+    jsonHandler.searchMaps(request, response, parsedUrl.href);
   }
   else {
     jsonHandler.notReal(request, response);

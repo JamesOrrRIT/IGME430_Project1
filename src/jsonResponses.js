@@ -20,7 +20,7 @@ const respondJSONMeta = (request, response, status) => {
 //Return the user object as json
 const getUsers = (request, response) => {
     const responseJSON = {
-        savedMaps,
+        mapData,
     };
 
     respondJSON(request, response, 200, responseJSON);
@@ -75,14 +75,50 @@ const notReal = (request, response) => {
 
 //Search for the data accordingly
 const searchMaps = (request, response, params) => {
+    //Parse the params to get the right information
+    let searchType = params.slice(params.indexOf('=') + 1, params.lastIndexOf("&")); //The type of data being search
+    let searchQuery = params.substring(params.lastIndexOf("=") + 1); //Whatever the user has typed in the bar
+
+    //Checks for the maps by the right parameters and saves them in an array
+    const searchedMaps = lookFor(searchType, searchQuery);
+
+    //Default response method
     const responseJSON = {
-        message: mapData,
+        message: `Showing results for maps with \'${searchQuery}\' under \'${searchType}\'`,
     };
 
-    let responseCode = 204;
+    //Default response code
+    let responseCode = 201;
 
-    return respondJSON(request, response, responseCode, responseJSON);
+    //If there is nothing in the search box
+    if(searchQuery === "")
+    {
+        responseJSON.message = 'Please fill in the field before searching';
+        responseCode = 400;
+    }
+
+    //If no maps correlating to the data can be found
+    if(searchedMaps.length)
+    {
+        responseJSON.message = `No maps found with \'${searchQuery}\' under \'${searchType}\'`;
+        responseCode = 404;
+    }
+
+    respondJSON(request, response, responseCode, responseJSON);
 };
+
+//Go through all of the maps and find the ones according to the search
+const lookFor = (searchType, searchQuery) => {
+    let mapsFound = {};
+
+    //Go through each of the maps by the corresponding type, and search for the inputed searched term
+    for(let item in mapData)
+    {
+
+    }
+
+    return mapsFound;
+}
 
 //Adds a comment to the selected map
 const commentMap = (request, response) => {
