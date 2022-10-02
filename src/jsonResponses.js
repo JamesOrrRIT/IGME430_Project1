@@ -98,11 +98,11 @@ const searchMaps = (request, response, params) => {
     }
 
     //If no maps correlating to the data can be found
-    if(searchedMaps.length)
-    {
-        responseJSON.message = `No maps found with \'${searchQuery}\' under \'${searchType}\'`;
-        responseCode = 404;
-    }
+    //if(searchedMaps.length)
+    //{
+        //responseJSON.message = `No maps found with \'${searchQuery}\' under \'${searchType}\'`;
+        //responseCode = 404;
+    //}
 
     respondJSON(request, response, responseCode, responseJSON);
 };

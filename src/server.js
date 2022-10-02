@@ -35,8 +35,8 @@ const handlePost = (request, response, parsedUrl) => {
 
 const handleGet = (request, response, parsedUrl) => {
   console.log(parsedUrl);
-  const queryParams = query.parse(parsedUrl.query);
-  console.log(queryParams);
+  //const queryParams = query.parse(parsedUrl.query);
+  //console.log(queryParams);
 
   if (parsedUrl.pathname === '/') {
     htmlHandler.getIndex(request, response);
