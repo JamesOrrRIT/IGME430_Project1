@@ -1,7 +1,7 @@
 const fs = require('fs');
 const mapData = JSON.parse(fs.readFileSync(`${__dirname}/../data/codZombiesMaps.json`))["maps"];
 
-const searchedMaps = {};
+//const searchedMaps = {};
 const savedMaps = {};
 
 //Function to respond to the json object with the request, response, status code, and object
@@ -80,11 +80,11 @@ const searchMaps = (request, response, params) => {
     let searchQuery = params.substring(params.lastIndexOf("=") + 1); //Whatever the user has typed in the bar
 
     //Checks for the maps by the right parameters and saves them in an array
-    const searchedMaps = lookFor(searchType, searchQuery);
+    //searchedMaps = lookFor(searchType, searchQuery);
 
     //Default response method
     const responseJSON = {
-        message: `Showing results for maps with \'${searchQuery}\' under \'${searchType}\'`,
+        message: `Showing results for maps with ${searchQuery} under ${searchType}`,
     };
 
     //Default response code
@@ -108,31 +108,31 @@ const searchMaps = (request, response, params) => {
 };
 
 //Go through all of the maps and find the ones according to the search
-const lookFor = (searchType, searchQuery) => {
-    let mapsFound = {};
+//const lookFor = (searchType, searchQuery) => {
+    //let mapsFound = {};
 
     //Go through each of the maps by the corresponding type, and search for the inputed searched term
-    for(let item in mapData)
-    {
+    //for(let item in mapData)
+    //{
 
-    }
+    //}
 
-    return mapsFound;
-}
+    //return mapsFound;
+//}
 
 //Adds a comment to the selected map
-const commentMap = (request, response) => {
+//const commentMap = (request, response) => {
 
-}
+//}
 
 //Special functions to cycle between the data shown
-const getPrev = (request, response) => {
+//const getPrev = (request, response) => {
 
-};
+//};
 
-const getNext = (request, response) => {
+//const getNext = (request, response) => {
 
-};
+//};
 
 //Set out the functions for public use
 module.exports = {
