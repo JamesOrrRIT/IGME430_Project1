@@ -35,8 +35,8 @@ const handlePost = (request, response, parsedUrl) => {
 
 const handleGet = (request, response, parsedUrl) => {
   console.log(parsedUrl);
-  //const queryParams = query.parse(parsedUrl.query);
-  //console.log(queryParams);
+  const queryParams = query.parse(parsedUrl.query);
+  console.log(queryParams);
 
   if (parsedUrl.pathname === '/') {
     htmlHandler.getIndex(request, response);
@@ -49,6 +49,9 @@ const handleGet = (request, response, parsedUrl) => {
   } 
   else if (parsedUrl.pathname === '/searchMaps') {
     jsonHandler.searchMaps(request, response, parsedUrl.href);
+  }
+  else if (parsedUrl.pathName === '/commentMap') {
+    jsonHandler.commentMap(request, response);
   }
   else {
     jsonHandler.notReal(request, response);

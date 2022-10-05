@@ -1,8 +1,13 @@
 const fs = require('fs');
 const mapData = JSON.parse(fs.readFileSync(`${__dirname}/../data/codZombiesMaps.json`))["maps"];
 
-//const searchedMaps = {};
-const savedMaps = {};
+let sendBack = mapData.length;
+
+let searchedMaps = {};
+let savedMaps = {};
+
+let searchIndex = 0;
+let savedIndex = 0;
 
 //Function to respond to the json object with the request, response, status code, and object
 const respondJSON = (request, response, status, object) => {
@@ -20,7 +25,7 @@ const respondJSONMeta = (request, response, status) => {
 //Return the user object as json
 const getUsers = (request, response) => {
     const responseJSON = {
-        mapData,
+        sendBack,
     };
 
     respondJSON(request, response, 200, responseJSON);
@@ -80,11 +85,11 @@ const searchMaps = (request, response, params) => {
     let searchQuery = params.substring(params.lastIndexOf("=") + 1); //Whatever the user has typed in the bar
 
     //Checks for the maps by the right parameters and saves them in an array
-    //searchedMaps = lookFor(searchType, searchQuery);
+    searchedMaps = lookFor(searchType, searchQuery);
 
     //Default response method
     const responseJSON = {
-        message: `Showing results for maps with ${searchQuery} under ${searchType}`,
+        message: searchedMaps,
     };
 
     //Default response code
@@ -98,41 +103,74 @@ const searchMaps = (request, response, params) => {
     }
 
     //If no maps correlating to the data can be found
-    //if(searchedMaps.length)
-    //{
-        //responseJSON.message = `No maps found with \'${searchQuery}\' under \'${searchType}\'`;
-        //responseCode = 404;
-    //}
+    if(searchedMaps === {})
+    {
+        responseJSON.message = `No maps found with '${searchQuery}' under '${searchType}'`;
+        responseCode = 404;
+    }
 
     respondJSON(request, response, responseCode, responseJSON);
 };
 
 //Go through all of the maps and find the ones according to the search
-//const lookFor = (searchType, searchQuery) => {
-    //let mapsFound = {};
+const lookFor = (searchType, searchQuery) => {
+    let mapsFound = {};
 
-    //Go through each of the maps by the corresponding type, and search for the inputed searched term
-    //for(let item in mapData)
-    //{
+    for(let i = 0; i < mapData.length; i++)
+    {
+        //Go through each of the maps by the corresponding type, and search for the inputed searched term
+        let checking;
 
-    //}
+        switch(searchType) {
+            case 'map-name':
+                checking = mapData[i].mapName;
+                break;
+            case 'enemies':
+                checking = mapData[i].enemies;
+                break;
+            case 'easter-eggs':
+                checking = mapData[i].easterEggs;
+                break;
+            case 'perks':
+                checking = mapData[i].perks;
+                break;
+            default:
+                checking = mapData[i].wonderWeapons
+                break;
+        }
 
-    //return mapsFound;
-//}
+        if(checking.includes(searchQuery))
+        {  
+            mapsFound[mapsFound.length] = mapData[i];
+            //checking = 'yes';
+        }
+    }
+
+    return mapsFound;
+}
 
 //Adds a comment to the selected map
-//const commentMap = (request, response) => {
+const commentMap = (request, response, params) => {
+    
+    const responseJSON = {
+        params,
+    }
 
-//}
+    let responseCode = 201;
+
+    if(params == "")
+    {
+        responseJSON.message = 'Please fill in the field with a comment before saving.'
+        responseCode = 400;
+    }
+
+    respondJSON(request, response, responseCode, responseJSON);
+}
 
 //Special functions to cycle between the data shown
-//const getPrev = (request, response) => {
+const changeIndex = (request, response, value) => {
 
-//};
-
-//const getNext = (request, response) => {
-
-//};
+};
 
 //Set out the functions for public use
 module.exports = {
@@ -140,4 +178,5 @@ module.exports = {
     getUsers,
     notReal,
     searchMaps,
+    commentMap,
 };
