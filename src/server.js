@@ -53,6 +53,12 @@ const handleGet = (request, response, parsedUrl) => {
   else if (parsedUrl.pathname === '/searchMaps') {
     jsonHandler.searchMaps(request, response, parsedUrl.href);
   }
+  else if (parsedUrl.pathname === '/prevIndex') {
+    jsonHandler.changeIndex(request, response, 0);
+  }
+  else if (parsedUrl.pathname === '/nextIndex') {
+    jsonHandler.changeIndex(request, response, 1);
+  }
   else {
     jsonHandler.notReal(request, response);
   } 

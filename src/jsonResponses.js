@@ -8,7 +8,7 @@ let searchedNumber = 0;
 let savedMaps = {};
 
 let searchIndex = 0;
-let savedIndex = 0;
+//let savedIndex = 0;
 
 //Function to respond to the json object with the request, response, status code, and object
 const respondJSON = (request, response, status, object) => {
@@ -26,7 +26,7 @@ const respondJSONMeta = (request, response, status) => {
 //Return the user object as json
 const getUsers = (request, response) => {
     const responseJSON = {
-        sendBack,
+        savedMaps,
     };
 
     respondJSON(request, response, 200, responseJSON);
@@ -159,20 +159,44 @@ const lookFor = (searchType, searchQuery) => {
 
 //Adds a comment to the selected map
 const commentMap = (request, response, params) => {
-    
+    //Default message
     const responseJSON = {
-        params,
+        message: 'Please fill in the field before commenting.',
     }
 
-    let responseCode = 201;
-
-    if(params == "")
+    //Check if the user searched for a map before commenting
+    if(Object.keys(searchedMaps).length === 0)
     {
-        responseJSON.message = 'Please fill in the field with a comment before saving.'
-        responseCode = 400;
+        responseJSON.message = `Please search for a map before commenting.`;
+        return respondJSON(request, response, 400, responseJSON);
     }
 
-    respondJSON(request, response, responseCode, responseJSON);
+    //Check if the field is filled in, return 400 if it is
+    if(!savedMaps.comment) {
+        response.id = 'missingParams';
+        return respondJSON(request, response, 400, responseJSON);
+    }
+
+    //Default status code
+    let responseCode = 204;
+
+    //If the user doesn't exist, set a new code and create an empty user
+    if(!savedMaps[params.name]) {
+        responseCode = 201;
+        savedMaps[params.name] = {};
+    }
+
+    //Add the fields for this user
+    savedMaps[params.comment].comment = savedMaps.comment;
+
+    //If the response is create, we create a message
+    if(responseCode === 201)
+    {
+        responseJSON.message = 'Created Successfully';
+        return respondJSON(request, response, responseCode, responseJSON);
+    }
+
+    return respondJSONMeta(request, response, responseCode);
 }
 
 //Special functions to cycle between the data shown

@@ -120,7 +120,7 @@
       const nameAction = commentForm.getAttribute('action');
       const nameMethod = commentForm.getAttribute('method');
 
-      const commentField = commentForm.querySelector('#commentField');
+      const commentField = commentField.querySelector('#commentField');
 
       const url = `comment=${commentField.value}`;
 
@@ -138,12 +138,12 @@
     }
 
     const prevIndex = async (prevButton) => {
-      const nameAction = userForm.getAttribute('action');
-      const nameMethod = userForm.getAttribute('method');
+      const nameAction = prevButton.getAttribute('action');
+      const nameMethod = prevButton.getAttribute('method');
 
-      const button = prevButton.querySelector('#prevButton');
+      const button = document.querySelector('#prevButton');
 
-      let response = await fetch(userField.value, {
+      let response = await fetch(nameAction, {
         method: nameMethod,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -154,9 +154,21 @@
       handleResponse(response, prevButton);
     }
 
-    const nextIndex = async () => {
-      const nameAction = userForm.getAttribute('action');
-      const nameMethod = userForm.getAttribute('method');
+    const nextIndex = async (nextButton) => {
+      const nameAction = nextButton.getAttribute('action');
+      const nameMethod = nextButton.getAttribute('method');
+
+      const button = document.querySelector('#nextButton');
+
+      let response = await fetch(nameAction, {
+        method: nameMethod,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json',
+        },
+      });
+
+      handleResponse(response, nextButton);
     }
 
     const init = () => {
@@ -167,7 +179,7 @@
       const commentForm = document.querySelector('#commentForm');
 
       const prevButton = document.querySelector('#prevButton');
-      const nextButton = document.querySelector('#prevButton');
+      const nextButton = document.querySelector('#nextButton');
 
       const addUser = (e) => {
         e.preventDefault();
@@ -208,10 +220,8 @@
       nameForm.addEventListener('submit', addUser);
       userForm.addEventListener('submit', getUsers);
 
-
       mapForm.addEventListener('submit', searchMaps);
       commentForm.addEventListener('submit', postComment);
-
 
       prevButton.addEventListener('submit', getPrev);
       nextButton.addEventListener('submit', getNext);
@@ -257,11 +267,11 @@
       <input id="mapField" type="text">
       <input type="submit" value="Search">
 
-      <form id="prevForm" action="prevIndex" method="post">
+      <form id="prevForm" action="/prevIndex" method="post">
         <input id="prevButton" type="submit" value="Prev">
       </form>
 
-      <form id="nextForm" action="nextIndex" method="post">
+      <form id="nextForm" action="/nextIndex" method="post">
         <input id="nextButton" type="submit" value="Next">
       </form>
     </form>
