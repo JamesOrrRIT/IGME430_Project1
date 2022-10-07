@@ -26,7 +26,7 @@ const respondJSONMeta = (request, response, status) => {
 //Return the user object as json
 const getUsers = (request, response) => {
     const responseJSON = {
-        savedMaps,
+        message: Object.keys(searchedMaps).length,
     };
 
     respondJSON(request, response, 200, responseJSON);
@@ -84,6 +84,7 @@ const searchMaps = (request, response, params) => {
     //Reset the searched array if it was previously filled
     searchedMaps = {};
     searchedNumber = 0;
+    searchIndex = 0;
 
     //Parse the params to get the right information
     let searchType = params.slice(params.indexOf('=') + 1, params.lastIndexOf("&")); //The type of data being search
@@ -201,21 +202,30 @@ const commentMap = (request, response, params) => {
 
 //Special functions to cycle between the data shown
 const changeIndex = (request, response, value) => {
+    //If no map was found yet, tell the user to do so
+    const responseJSON = {
+        message: `Please search for maps before going through the indexes.`,
+    };
+
+    //Check if the user searched for a map before commenting
+    if(Object.keys(searchedMaps).length === 0 || Object.keys(searchedMaps).length === 1)
+    {
+        respondJSON(request, response, 400, responseJSON);
+    }
+
     //Change the value of searchIndex if the prev button was pressed and the index is currently not 0
     if(value == 0 && searchIndex != 0)
     {
         searchIndex -= 1;
     }
     //Change the value of searchIndex if the next button was pressed and the index doesn't exceed the size of the array
-    else if(value == 1 && searchIndex <= mapData.length)
+    else if(value == 1 && searchIndex != (Object.keys(searchedMaps).length) - 1)
     {
         searchIndex += 1;
     }
 
-    //Default response method
-    const responseJSON = {
-        message: searchedMaps[searchIndex],
-    };
+    //Return the new index of the array
+    responseJSON.message = searchedMaps[searchIndex];
 
     //Default response code
     let responseCode = 201;

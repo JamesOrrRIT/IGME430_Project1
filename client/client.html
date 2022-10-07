@@ -146,7 +146,6 @@
       let response = await fetch(nameAction, {
         method: nameMethod,
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
           'Accept': 'application/json',
         },
       });
@@ -163,7 +162,6 @@
       let response = await fetch(nameAction, {
         method: nameMethod,
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
           'Accept': 'application/json',
         },
       });
@@ -207,13 +205,13 @@
 
       const getPrev = (e) => {
         e.preventDefault();
-        prevIndex(prevForm);
+        prevIndex(prevButton);
         return false;
       }
 
       const getNext = (e) => {
         e.preventDefault();
-        nextIndex(nextForm);
+        nextIndex(nextButton);
         return false;
       }
 
@@ -266,20 +264,20 @@
 
       <input id="mapField" type="text">
       <input type="submit" value="Search">
-
-      <form id="prevForm" action="/prevIndex" method="post">
-        <input id="prevButton" type="submit" value="Prev">
-      </form>
-
-      <form id="nextForm" action="/nextIndex" method="post">
-        <input id="nextButton" type="submit" value="Next">
-      </form>
     </form>
 
     <form id="commentForm" action="/commentMap" method="post">
       <label for="commentField">Have something to say about the map? Add a comment: </label>
       <input id="commentField" type="text">
       <input type="submit" value="Comment">
+    </form>
+
+    <form id="prevForm" action="/prevIndex" method="get">
+      <input id="prevButton" type="submit" value="Prev">
+    </form>
+
+    <form id="nextForm" action="/nextIndex" method="get">
+      <input id="nextButton" type="submit" value="Next">
     </form>
     
     <form id="instructions">
