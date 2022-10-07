@@ -4,6 +4,7 @@ const mapData = JSON.parse(fs.readFileSync(`${__dirname}/../data/codZombiesMaps.
 let sendBack = mapData.length;
 
 let searchedMaps = {};
+let searchedNumber = 0;
 let savedMaps = {};
 
 let searchIndex = 0;
@@ -80,6 +81,10 @@ const notReal = (request, response) => {
 
 //Search for the data accordingly
 const searchMaps = (request, response, params) => {
+    //Reset the searched array if it was previously filled
+    searchedMaps = {};
+    searchedNumber = 0;
+
     //Parse the params to get the right information
     let searchType = params.slice(params.indexOf('=') + 1, params.lastIndexOf("&")); //The type of data being search
     let searchQuery = params.substring(params.lastIndexOf("=") + 1); //Whatever the user has typed in the bar
@@ -89,7 +94,7 @@ const searchMaps = (request, response, params) => {
 
     //Default response method
     const responseJSON = {
-        message: searchedMaps,
+        message: searchedMaps[0],
     };
 
     //Default response code
@@ -103,7 +108,7 @@ const searchMaps = (request, response, params) => {
     }
 
     //If no maps correlating to the data can be found
-    if(searchedMaps === {})
+    if(Object.keys(searchedMaps).length === 0)
     {
         responseJSON.message = `No maps found with '${searchQuery}' under '${searchType}'`;
         responseCode = 404;
@@ -116,33 +121,36 @@ const searchMaps = (request, response, params) => {
 const lookFor = (searchType, searchQuery) => {
     let mapsFound = {};
 
-    for(let i = 0; i < mapData.length; i++)
+    for(const elem of mapData)
     {
         //Go through each of the maps by the corresponding type, and search for the inputed searched term
         let checking;
 
         switch(searchType) {
             case 'map-name':
-                checking = mapData[i].mapName;
+                checking = elem.mapName;
                 break;
             case 'enemies':
-                checking = mapData[i].enemies;
+                checking = elem.enemies;
                 break;
             case 'easter-eggs':
-                checking = mapData[i].easterEggs;
+                checking = elem.easterEggs;
                 break;
             case 'perks':
-                checking = mapData[i].perks;
+                checking = elem.perks;
                 break;
             default:
-                checking = mapData[i].wonderWeapons
+                checking = elem.wonderWeapons
                 break;
         }
 
+        //Add the element to the searchedMaps array if the search query lines up
         if(checking.includes(searchQuery))
         {  
-            mapsFound[mapsFound.length] = mapData[i];
-            //checking = 'yes';
+            //Write the data as a string for easy parsing
+            mapsFound[searchedNumber] = `Map Name: ${elem.mapName}|Enemies: ${elem.enemies}|Easter Eggs: ${elem.easterEggs}|Perks: ${elem.perks}|Wonder Weapons: ${elem.wonderWeapons}`;
+            //Increment the count of searchedNumber to fill in any future indexes
+            searchedNumber += 1;
         }
     }
 
@@ -169,7 +177,26 @@ const commentMap = (request, response, params) => {
 
 //Special functions to cycle between the data shown
 const changeIndex = (request, response, value) => {
+    //Change the value of searchIndex if the prev button was pressed and the index is currently not 0
+    if(value == 0 && searchIndex != 0)
+    {
+        searchIndex -= 1;
+    }
+    //Change the value of searchIndex if the next button was pressed and the index doesn't exceed the size of the array
+    else if(value == 1 && searchIndex <= mapData.length)
+    {
+        searchIndex += 1;
+    }
 
+    //Default response method
+    const responseJSON = {
+        message: searchedMaps[searchIndex],
+    };
+
+    //Default response code
+    let responseCode = 201;
+
+    respondJSON(request, response, responseCode, responseJSON);
 };
 
 //Set out the functions for public use
@@ -179,4 +206,5 @@ module.exports = {
     notReal,
     searchMaps,
     commentMap,
+    changeIndex,
 };

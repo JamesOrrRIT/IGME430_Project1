@@ -29,7 +29,10 @@ const parseBody = (request, response, handler) => {
 
 const handlePost = (request, response, parsedUrl) => {
     if (parsedUrl.pathname === '/addUser') {
-        parseBody(request, response, jsonHandler.addUser);
+      parseBody(request, response, jsonHandler.addUser);
+    }
+    else if (parsedUrl.pathname === '/commentMap') {
+      parseBody(request, response, jsonHandler.commentMap);
     }
 };
 
@@ -49,9 +52,6 @@ const handleGet = (request, response, parsedUrl) => {
   } 
   else if (parsedUrl.pathname === '/searchMaps') {
     jsonHandler.searchMaps(request, response, parsedUrl.href);
-  }
-  else if (parsedUrl.pathName === '/commentMap') {
-    jsonHandler.commentMap(request, response);
   }
   else {
     jsonHandler.notReal(request, response);
