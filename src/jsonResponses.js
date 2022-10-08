@@ -1,14 +1,14 @@
 const fs = require('fs');
 const mapData = JSON.parse(fs.readFileSync(`${__dirname}/../data/codZombiesMaps.json`))["maps"];
 
-let sendBack = mapData.length;
-
 let searchedMaps = {};
 let searchedNumber = 0;
 let savedMaps = {};
+let currentMap = {};
+let currentName;
 
 let searchIndex = 0;
-//let savedIndex = 0;
+let savedIndex = 0;
 
 //Function to respond to the json object with the request, response, status code, and object
 const respondJSON = (request, response, status, object) => {
@@ -26,10 +26,18 @@ const respondJSONMeta = (request, response, status) => {
 //Return the user object as json
 const getUsers = (request, response) => {
     const responseJSON = {
-        message: Object.keys(searchedMaps).length,
+        message: savedMaps,
+        returnValue: 1,
     };
 
-    respondJSON(request, response, 200, responseJSON);
+    //Return this value if nothing was saved yet
+    if(Object.keys(savedMaps).length === 0)
+    {
+        responseJSON.message = 'There are currently no saved maps.';
+        return respondJSON(request, response, 400, responseJSON);
+    }
+
+    return respondJSON(request, response, 200, responseJSON);
 }
 
 //Adds a user when using the POST body
@@ -37,6 +45,7 @@ const addUser = (request, response, body) => {
     //Default message
     const responseJSON = {
         message: 'Name and age are both required.',
+        returnValue: 0,
     };
 
     //Check if both fields are filled in
@@ -92,10 +101,12 @@ const searchMaps = (request, response, params) => {
 
     //Checks for the maps by the right parameters and saves them in an array
     searchedMaps = lookFor(searchType, searchQuery);
+    currentMap = searchedMaps[0];
 
     //Default response method
     const responseJSON = {
-        message: searchedMaps[0],
+        message: currentMap,
+        returnValue: 1,
     };
 
     //Default response code
@@ -163,6 +174,7 @@ const commentMap = (request, response, params) => {
     //Default message
     const responseJSON = {
         message: 'Please fill in the field before commenting.',
+        returnValue: 0,
     }
 
     //Check if the user searched for a map before commenting
@@ -173,7 +185,7 @@ const commentMap = (request, response, params) => {
     }
 
     //Check if the field is filled in, return 400 if it is
-    if(!savedMaps.comment) {
+    if(!params.comment) {
         response.id = 'missingParams';
         return respondJSON(request, response, 400, responseJSON);
     }
@@ -182,12 +194,13 @@ const commentMap = (request, response, params) => {
     let responseCode = 204;
 
     //If the user doesn't exist, set a new code and create an empty user
-    if(!savedMaps[params.name]) {
+    if(!savedMaps[params.comment]) {
         responseCode = 201;
-        savedMaps[params.name] = {};
+        savedMaps[params.comment] = {};
     }
 
     //Add the fields for this user
+    savedMaps[params.comment].map = currentMap.mapName;
     savedMaps[params.comment].comment = savedMaps.comment;
 
     //If the response is create, we create a message
@@ -204,7 +217,8 @@ const commentMap = (request, response, params) => {
 const changeIndex = (request, response, value) => {
     //If no map was found yet, tell the user to do so
     const responseJSON = {
-        message: `Please search for maps before going through the indexes.`,
+        message: "Please search for maps before going through the indexes.",
+        returnValue: 0,
     };
 
     //Check if the user searched for a map before commenting
@@ -225,7 +239,8 @@ const changeIndex = (request, response, value) => {
     }
 
     //Return the new index of the array
-    responseJSON.message = searchedMaps[searchIndex];
+    currentMap = searchedMaps[searchIndex];
+    responseJSON.message = currentMap;
 
     //Default response code
     let responseCode = 201;

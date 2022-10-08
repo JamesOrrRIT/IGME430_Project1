@@ -45,14 +45,37 @@
         else if(form.method == "get"){
           response.text().then((resText) => {
             let parsedResponse = JSON.parse(resText);
-            let parsedUsers = JSON.stringify(parsedResponse.message);
-            console.log(parsedResponse);
 
-            if(urlField.value == "/getUsers"){
-              content.innerHTML += `<p>${parsedUsers}</p>`;
+            //Checks the return value to see how the data should be handled
+            //returnValue of 1 is for get methods through the search, prev, and next functions
+            if(parsedResponse.returnValue === 1)
+            {
+              //Lays out the data in a series of rows
+              let output = parsedResponse.message.split('|');
+
+              for(const elem of output)
+              {
+                content.innerHTML += `<p>${elem}</p>`;
+              }
             }
-            else if(urlField.value == "/notReal"){
-              content.innerHTML += `<p>${parsedResponse.message}</p>`;
+
+            //returnValue of 2 is for the get method by pulling up the saved maps and their comments
+            else if(parsedResponse.returnValue === 2)
+            {
+              console.log(parsedResponse.message);
+            }
+
+            else
+            {
+              let parsedUsers = JSON.stringify(parsedResponse.message);
+              //console.log(parsedResponse);
+
+              if(urlField.value == "/getUsers"){
+                //content.innerHTML += `<p>${parsedUsers}</p>`;
+              }
+              else if(urlField.value == "/notReal"){
+                //content.innerHTML += `<p>${parsedResponse.message}</p>`;
+              }
             }
           });
         }
@@ -120,7 +143,7 @@
       const nameAction = commentForm.getAttribute('action');
       const nameMethod = commentForm.getAttribute('method');
 
-      const commentField = commentField.querySelector('#commentField');
+      const commentField = commentForm.querySelector('#commentField');
 
       const url = `comment=${commentField.value}`;
 
@@ -133,7 +156,6 @@
         body: url,
       });
 
-      console.log(response);
       handleResponse(response, commentForm);
     }
 
@@ -141,7 +163,7 @@
       const nameAction = prevButton.getAttribute('action');
       const nameMethod = prevButton.getAttribute('method');
 
-      const button = document.querySelector('#prevButton');
+      //const button = prevButton.querySelector('#prevButton');
 
       let response = await fetch(nameAction, {
         method: nameMethod,
@@ -157,7 +179,7 @@
       const nameAction = nextButton.getAttribute('action');
       const nameMethod = nextButton.getAttribute('method');
 
-      const button = document.querySelector('#nextButton');
+      //const button = nextButton.querySelector('#nextButton');
 
       let response = await fetch(nameAction, {
         method: nameMethod,
@@ -176,8 +198,8 @@
       const mapForm = document.querySelector('#mapForm');
       const commentForm = document.querySelector('#commentForm');
 
-      const prevButton = document.querySelector('#prevButton');
-      const nextButton = document.querySelector('#nextButton');
+      const prevForm = document.querySelector('#prevForm');
+      const nextForm = document.querySelector('#nextForm');
 
       const addUser = (e) => {
         e.preventDefault();
@@ -205,13 +227,13 @@
 
       const getPrev = (e) => {
         e.preventDefault();
-        prevIndex(prevButton);
+        prevIndex(prevForm);
         return false;
       }
 
       const getNext = (e) => {
         e.preventDefault();
-        nextIndex(nextButton);
+        nextIndex(nextForm);
         return false;
       }
 
@@ -221,8 +243,8 @@
       mapForm.addEventListener('submit', searchMaps);
       commentForm.addEventListener('submit', postComment);
 
-      prevButton.addEventListener('submit', getPrev);
-      nextButton.addEventListener('submit', getNext);
+      prevForm.addEventListener('submit', getPrev);
+      nextForm.addEventListener('submit', getNext);
     };
 
     window.onload = init;
@@ -251,6 +273,27 @@
       <input type="submit" value="Get User" />
     </form>
 
+    <form id="instructions">
+      <h3>This form is going to be used to load a JSON file containing data on maps from the Call of Duty Zombie series. The file lists off multiple maps from throughout the games and various aspects about them. I will attempt to do the following with this:</h3>
+      <ul>
+        <li>Parse the file and break down each map based on what the user wants to look for.</li>
+        <li>The search is done with a dropdown menu that will look through a designated component (name, enemy types, etc.)</li>
+        <li>I will attempt to carry over the buttons from my other API projects which will display one search at a time and the user can scroll through them with a 'prev' and 'next' button.</li>
+      </ul>
+
+      <h3>This is how I will use the status codes:</h3>
+      <ul>
+        <li>200: Retieve any saved maps added to the array</li>
+        <li>201: Called when the map is added to the array when it is first searched</li>
+        <li>204: Called when the map selected is already added to the array</li>
+        <li>400: Called when the search paramter is empty</li>
+        <li>404: Called when the server can't return what was searched</li>
+        <li>500 (if necessary): If the server encounters a situation it doesn't know how to handle</li>
+      </ul>
+
+      <h3>When searching for a key word in that aspect, use a single word and be sure to use upper case letters.</h3>
+    </form>
+
     <form id="mapForm" action="/searchMaps" method="get">
       <h3>Call of Duty Zombie Map Loader</h3>
       <label for="searchIndex">Search for a map by it's:</label>
@@ -273,32 +316,11 @@
     </form>
 
     <form id="prevForm" action="/prevIndex" method="get">
-      <input id="prevButton" type="submit" value="Prev">
+      <input type="submit" value="Prev">
     </form>
 
     <form id="nextForm" action="/nextIndex" method="get">
-      <input id="nextButton" type="submit" value="Next">
-    </form>
-    
-    <form id="instructions">
-      <h3>This form is going to be used to load a JSON file containing data on maps from the Call of Duty Zombie series. The file lists off multiple maps from throughout the games and various aspects about them. I will attempt to do the following with this:</h3>
-      <ul>
-        <li>Parse the file and break down each map based on what the user wants to look for.</li>
-        <li>The search is done with a dropdown menu that will look through a designated component (name, enemy types, etc.)</li>
-        <li>I will attempt to carry over the buttons from my other API projects which will display one search at a time and the user can scroll through them with a 'prev' and 'next' button.</li>
-      </ul>
-
-      <h3>This is how I will use the status codes:</h3>
-      <ul>
-        <li>200: Retieve any saved maps added to the array</li>
-        <li>201: Called when the map is added to the array when it is first searched</li>
-        <li>204: Called when the map selected is already added to the array</li>
-        <li>400: Called when the search paramter is empty</li>
-        <li>404: Called when the server can't return what was searched</li>
-        <li>500 (if necessary): If the server encounters a situation it doesn't know how to handle</li>
-      </ul>
-
-      <h3>Try and add a way for the user to add data into the saved data</h3>
+      <input type="submit" value="Next">
     </form>
   </section>
   <section id="content">

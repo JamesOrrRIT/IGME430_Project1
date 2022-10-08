@@ -15,9 +15,9 @@ html, body {
 }
 
 #content {
-  margin-top: 100px;
+  margin-left: 20px;
   font-size: 2em;
-  text-align: center;
+  text-align: left;
 }
 
 #instructions {
