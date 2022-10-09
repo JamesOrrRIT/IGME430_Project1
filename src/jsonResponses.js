@@ -50,43 +50,35 @@ const notReal = (request, response) => {
 };
 
 //Go through all of the maps and find the ones according to the search
-const lookFor = (searchType, searchQuery) => {
-    let mapsFound = {};
+const lookFor = (searchType, searchQuery, index) => {
+    let checking;
 
-    for(const elem of mapData)
-    {
-        //Go through each of the maps by the corresponding type, and search for the inputed searched term
-        let checking;
-
-        switch(searchType) {
-            case 'map-name':
-                checking = elem.mapName;
-                break;
-            case 'enemies':
-                checking = elem.enemies;
-                break;
-            case 'easter-eggs':
-                checking = elem.easterEggs;
-                break;
-            case 'perks':
-                checking = elem.perks;
-                break;
-            default:
-                checking = elem.wonderWeapons
-                break;
-        }
-
-        //Add the element to the searchedMaps array if the search query lines up
-        if(checking.includes(searchQuery))
-        {  
-            //Write the data as a string for easy parsing
-            mapsFound[searchedNumber] = `Map Name: ${elem.mapName} (${elem.nameTranslation})|Location: ${elem.location}|Date: ${elem.date}|Enemies: ${elem.enemies}|Easter Eggs: ${elem.easterEggs}|Perks: ${elem.perks}|Wonder Weapons: ${elem.wonderWeapons}`;
-            //Increment the count of searchedNumber to fill in any future indexes
-            searchedNumber += 1;
-        }
+    switch(searchType) {
+        case 'map-name':
+            checking = mapData[index].mapName;
+            break;
+        case 'enemies':
+            checking = mapData[index].enemies;
+            break;
+        case 'easter-eggs':
+            checking = mapData[index].easterEggs;
+            break;
+        case 'perks':
+            checking = mapData[index].perks;
+            break;
+        default:
+            checking = mapData[i].wonderWeapons
+            break;
     }
 
-    return mapsFound;
+    //Add the element to the searchedMaps array if the search query lines up
+    if(checking.includes(searchQuery))
+    {  
+        //Write the data as a string for easy parsing
+        mapsFound[searchedNumber] = `Map Name: ${mapData[index].mapName} (${mapData[index].nameTranslation})|Location: ${mapData[index].location}|Date: ${mapData[index].date}|Enemies: ${mapData[index].enemies}|Easter Eggs: ${mapData[index].easterEggs}|Perks: ${mapData[index].perks}|Wonder Weapons: ${mapData[index].wonderWeapons}`;
+        //Increment the count of searchedNumber to fill in any future indexes
+        searchedNumber += 1;
+    }
 }
 
 //Search for the data accordingly
