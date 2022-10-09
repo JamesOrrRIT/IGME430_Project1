@@ -39,44 +39,6 @@ const getUsers = (request, response) => {
     return respondJSON(request, response, 200, responseJSON);
 }
 
-//Adds a user when using the POST body
-const addUser = (request, response, body) => {
-    //Default message
-    const responseJSON = {
-        message: 'Name and age are both required.',
-        returnValue: 0,
-    };
-
-    //Check if both fields are filled in
-    //Return with an error of 400 if one or both are empty
-    if(!savedMaps.name || !savedMaps.age) {
-        response.id = 'missingParams';
-        return respondJSON(request, response, 400, responseJSON);
-    }
-
-    //Default status code
-    let responseCode = 204;
-
-    //If the user doesn't exist, set a new code and create an empty user
-    if(!savedMaps[body.name]) {
-        responseCode = 201;
-        savedMaps[body.name] = {};
-    }
-
-    //Add the fields for this user
-    savedMaps[body.name].name = savedMaps.name;
-    savedMaps[body.name].age = savedMaps.age;
-
-    //If the response is create, we create a message
-    if(responseCode == 201)
-    {
-        responseJSON.message = 'Created Successfully';
-        return respondJSON(request, response, responseCode, responseJSON);
-    }
-
-    return respondJSONMeta(request, response, responseCode);
-};
-
 //Run if the page cannot be found
 const notReal = (request, response) => {
     const responseJSON = {
@@ -152,7 +114,7 @@ const searchMaps = (request, response, params) => {
     let responseCode = 201;
 
     //If there is nothing in the search box
-    if(searchQuery == "")
+    if(searchQuery === "")
     {
         responseJSON.message = 'Please fill in the field before searching.';
         responseCode = 400;
@@ -206,7 +168,7 @@ const commentMap = (request, response, params) => {
     savedMaps[params.comment].map = currentName;
 
     //If the response is create, we create a message
-    if(responseCode == 201)
+    if(responseCode === 201)
     {
         responseJSON.message = 'Map Saved';
         return respondJSON(request, response, responseCode, responseJSON);
@@ -230,12 +192,12 @@ const changeIndex = (request, response, value) => {
     }
 
     //Change the value of searchIndex if the prev button was pressed and the index is currently not 0
-    if(value == 0 && searchIndex != 0)
+    if(value === 0 && searchIndex !== 0)
     {
         searchIndex -= 1;
     }
     //Change the value of searchIndex if the next button was pressed and the index doesn't exceed the size of the array
-    else if(value == 1 && searchIndex != (Object.keys(searchedMaps).length) - 1)
+    else if(value === 1 && searchIndex !== (Object.keys(searchedMaps).length) - 1)
     {
         searchIndex += 1;
     }
@@ -252,7 +214,6 @@ const changeIndex = (request, response, value) => {
 
 //Set out the functions for public use
 module.exports = {
-    addUser,
     getUsers,
     notReal,
     searchMaps,
