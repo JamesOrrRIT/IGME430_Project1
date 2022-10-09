@@ -68,7 +68,7 @@ const addUser = (request, response, body) => {
     savedMaps[body.name].age = savedMaps.age;
 
     //If the response is create, we create a message
-    if(responseCode === 201)
+    if(responseCode == 201)
     {
         responseJSON.message = 'Created Successfully';
         return respondJSON(request, response, responseCode, responseJSON);
@@ -85,47 +85,6 @@ const notReal = (request, response) => {
     };
 
     respondJSON(request, response, 404, responseJSON);
-};
-
-//Search for the data accordingly
-const searchMaps = (request, response, params) => {
-    //Reset the searched array if it was previously filled
-    searchedMaps = {};
-    searchedNumber = 0;
-    searchIndex = 0;
-
-    //Parse the params to get the right information
-    let searchType = params.slice(params.indexOf('=') + 1, params.lastIndexOf("&")); //The type of data being search
-    let searchQuery = params.substring(params.lastIndexOf("=") + 1); //Whatever the user has typed in the bar
-
-    //Checks for the maps by the right parameters and saves them in an array
-    searchedMaps = lookFor(searchType, searchQuery);
-    currentMap = searchedMaps[0];
-
-    //Default response method
-    const responseJSON = {
-        message: currentMap,
-        returnValue: 1,
-    };
-
-    //Default response code
-    let responseCode = 201;
-
-    //If there is nothing in the search box
-    if(searchQuery === "")
-    {
-        responseJSON.message = 'Please fill in the field before searching.';
-        responseCode = 400;
-    }
-
-    //If no maps correlating to the data can be found
-    if(Object.keys(searchedMaps).length === 0)
-    {
-        responseJSON.message = `No maps found with '${searchQuery}' under '${searchType}'.`;
-        responseCode = 404;
-    }
-
-    respondJSON(request, response, responseCode, responseJSON);
 };
 
 //Go through all of the maps and find the ones according to the search
@@ -159,7 +118,7 @@ const lookFor = (searchType, searchQuery) => {
         if(checking.includes(searchQuery))
         {  
             //Write the data as a string for easy parsing
-            mapsFound[searchedNumber] = `Map Name: ${elem.mapName}|Name Translation: ${elem.nameTranslation}|Location: ${elem.location}|Date: ${elem.date}|Enemies: ${elem.enemies}|Easter Eggs: ${elem.easterEggs}|Perks: ${elem.perks}|Wonder Weapons: ${elem.wonderWeapons}`;
+            mapsFound[searchedNumber] = `Map Name: ${elem.mapName} (${elem.nameTranslation})|Location: ${elem.location}|Date: ${elem.date}|Enemies: ${elem.enemies}|Easter Eggs: ${elem.easterEggs}|Perks: ${elem.perks}|Wonder Weapons: ${elem.wonderWeapons}`;
             //Increment the count of searchedNumber to fill in any future indexes
             searchedNumber += 1;
         }
@@ -167,6 +126,47 @@ const lookFor = (searchType, searchQuery) => {
 
     return mapsFound;
 }
+
+//Search for the data accordingly
+const searchMaps = (request, response, params) => {
+    //Reset the searched array if it was previously filled
+    searchedMaps = {};
+    searchedNumber = 0;
+    searchIndex = 0;
+
+    //Parse the params to get the right information
+    let searchType = params.slice(params.indexOf('=') + 1, params.lastIndexOf("&")); //The type of data being search
+    let searchQuery = params.substring(params.lastIndexOf("=") + 1); //Whatever the user has typed in the bar
+
+    //Checks for the maps by the right parameters and saves them in an array
+    searchedMaps = lookFor(searchType, searchQuery);
+    currentMap = searchedMaps[0];
+
+    //Default response method
+    const responseJSON = {
+        message: currentMap,
+        returnValue: 1,
+    };
+
+    //Default response code
+    let responseCode = 201;
+
+    //If there is nothing in the search box
+    if(searchQuery == "")
+    {
+        responseJSON.message = 'Please fill in the field before searching.';
+        responseCode = 400;
+    }
+
+    //If no maps correlating to the data can be found
+    if(Object.keys(searchedMaps).length == 0)
+    {
+        responseJSON.message = `No maps found with '${searchQuery}' under '${searchType}'.`;
+        responseCode = 404;
+    }
+
+    respondJSON(request, response, responseCode, responseJSON);
+};
 
 //Adds a comment to the selected map
 const commentMap = (request, response, params) => {
@@ -206,7 +206,7 @@ const commentMap = (request, response, params) => {
     savedMaps[params.comment].map = currentName;
 
     //If the response is create, we create a message
-    if(responseCode === 201)
+    if(responseCode == 201)
     {
         responseJSON.message = 'Map Saved';
         return respondJSON(request, response, responseCode, responseJSON);
@@ -242,7 +242,6 @@ const changeIndex = (request, response, value) => {
 
     //Return the new index of the array
     currentMap = searchedMaps[searchIndex];
-    currentName = currentMap.mapName;
     responseJSON.message = currentMap;
 
     //Default response code
