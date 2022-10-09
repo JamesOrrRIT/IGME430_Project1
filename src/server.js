@@ -28,10 +28,7 @@ const parseBody = (request, response, handler) => {
 };
 
 const handlePost = (request, response, parsedUrl) => {
-    if (parsedUrl.pathname === '/addUser') {
-      parseBody(request, response, jsonHandler.addUser);
-    }
-    else if (parsedUrl.pathname === '/commentMap') {
+    if (parsedUrl.pathname === '/commentMap') {
       parseBody(request, response, jsonHandler.commentMap);
     }
 };

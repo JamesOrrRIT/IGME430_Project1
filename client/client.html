@@ -52,55 +52,43 @@
             {
               //Lays out the data in a series of rows
               let output = parsedResponse.message.split('|');
+              console.log(parsedResponse.returnValue);
 
               for(const elem of output)
               {
                 content.innerHTML += `<p>${elem}</p>`;
               }
+              return;
             }
 
             //returnValue of 2 is for the get method by pulling up the saved maps and their comments
             else if(parsedResponse.returnValue === 2)
             {
-              console.log(parsedResponse.message);
+              console.log(parsedResponse.returnValue);
+              let parsedMessage = JSON.stringify(parsedResponse.message);
+              content.innerHTML += `<p>${parsedMessage}</p>`;
+
+              return;
             }
 
-            else
+            else if(parsedResponse.returnValue === 0)
             {
+              console.log(parsedResponse.returnValue);
               let parsedUsers = JSON.stringify(parsedResponse.message);
               //console.log(parsedResponse);
+              content.innerHTML += `<p>${parsedUsers}</p>`;
 
               if(urlField.value == "/getUsers"){
-                //content.innerHTML += `<p>${parsedUsers}</p>`;
+                
               }
               else if(urlField.value == "/notReal"){
                 //content.innerHTML += `<p>${parsedResponse.message}</p>`;
               }
+              return;
             }
           });
         }
       }
-    };
-
-    const sendPost = async (nameForm)=> {
-      const nameAction = nameForm.getAttribute('action');
-      const nameMethod = nameForm.getAttribute('method');
-
-      const nameField = nameForm.querySelector('#nameField');
-      const ageField = nameForm.querySelector('#ageField');
-
-      const formData = `name=${nameField.value}&age=${ageField.value}`;
-
-      let response = await fetch(nameAction, {
-        method: nameMethod,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept' : 'application/json',
-        },
-        body: formData,
-      });
-
-      handleResponse(response, nameForm);
     };
 
     const getPost = async (userForm) => {
@@ -163,8 +151,6 @@
       const nameAction = prevButton.getAttribute('action');
       const nameMethod = prevButton.getAttribute('method');
 
-      //const button = prevButton.querySelector('#prevButton');
-
       let response = await fetch(nameAction, {
         method: nameMethod,
         headers: {
@@ -179,8 +165,6 @@
       const nameAction = nextButton.getAttribute('action');
       const nameMethod = nextButton.getAttribute('method');
 
-      //const button = nextButton.querySelector('#nextButton');
-
       let response = await fetch(nameAction, {
         method: nameMethod,
         headers: {
@@ -192,7 +176,6 @@
     }
 
     const init = () => {
-      const nameForm = document.querySelector('#nameForm');
       const userForm = document.querySelector('#userForm');
 
       const mapForm = document.querySelector('#mapForm');
@@ -200,12 +183,6 @@
 
       const prevForm = document.querySelector('#prevForm');
       const nextForm = document.querySelector('#nextForm');
-
-      const addUser = (e) => {
-        e.preventDefault();
-        sendPost(nameForm);
-        return false;
-      }
 
       const getUsers = (e) => {
         e.preventDefault();
@@ -237,7 +214,6 @@
         return false;
       }
 
-      nameForm.addEventListener('submit', addUser);
       userForm.addEventListener('submit', getUsers);
 
       mapForm.addEventListener('submit', searchMaps);
@@ -252,27 +228,6 @@
 </head>
 <body>
   <section id="top">
-    <h3>POST Status Code Tests</h3>
-    <form id="nameForm" action="/addUser" method="post">
-      <label for="name">Name: </label>
-      <input id="nameField" type="text" name="name" />
-      <label for="age">Age: </label>
-      <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
-      <input type="submit" value="Add User" />
-    </form>
-
-    <form id="userForm" action="/getUsers" method="get">
-      <select id='urlField'>
-        <option value='/getUsers'>/getUsers</option>
-        <option value='/notReal'>/notReal</option>
-      </select>
-      <select id="methodSelect">
-        <option value="get">GET</option>
-        <option value="head">HEAD</option>
-      </select>
-      <input type="submit" value="Get User" />
-    </form>
-
     <form id="instructions">
       <h3>This form is going to be used to load a JSON file containing data on maps from the Call of Duty Zombie series. The file lists off multiple maps from throughout the games and various aspects about them. I will attempt to do the following with this:</h3>
       <ul>
@@ -288,10 +243,16 @@
         <li>204: Called when the map selected is already added to the array</li>
         <li>400: Called when the search paramter is empty</li>
         <li>404: Called when the server can't return what was searched</li>
-        <li>500 (if necessary): If the server encounters a situation it doesn't know how to handle</li>
       </ul>
 
-      <h3>When searching for a key word in that aspect, use a single word and be sure to use upper case letters.</h3>
+      <h3>When searching, please keep these in mind:</h3>
+      <ul>
+        <li>Search only by using a single word, and make sure you use the right aspect of the map from the dropdown menu.</li>
+        <li>When using that one word, make sure to use upper case where it would be appropriate.</li>
+        <li>Maps have a unique aspect when going through their names. Typing in 'World', '1', '2', '3', '4', or 'Cold' will display all the maps from World at War, Black Ops 1-4, and Cold War respectively.</li>
+        <li>Perks and Wonder Weapons also have a unique search. Typing in 'Debut' will show the first maps where a new perk or weapon are introduced.</li>
+        <li>This project is only using maps created by the original developers, Treyarch. Maps from Infinite Warfare and World War 2 are not included, and neither are the maps from Vanguard as they are still being developed.</li>
+      </ul>
     </form>
 
     <form id="mapForm" action="/searchMaps" method="get">
@@ -313,6 +274,18 @@
       <label for="commentField">Have something to say about the map? Add a comment: </label>
       <input id="commentField" type="text">
       <input type="submit" value="Comment">
+    </form>
+
+    <form id="userForm" action="/getUsers" method="get">
+      <select id='urlField'>
+        <option value='/getUsers'>/getUsers</option>
+        <option value='/notReal'>/notReal</option>
+      </select>
+      <select id="methodSelect">
+        <option value="get">GET</option>
+        <option value="head">HEAD</option>
+      </select>
+      <input type="submit" value="Get User" />
     </form>
 
     <form id="prevForm" action="/prevIndex" method="get">

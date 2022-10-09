@@ -5,10 +5,8 @@ let searchedMaps = {};
 let searchedNumber = 0;
 let savedMaps = {};
 let currentMap = {};
-let currentName;
 
 let searchIndex = 0;
-let savedIndex = 0;
 
 //Function to respond to the json object with the request, response, status code, and object
 const respondJSON = (request, response, status, object) => {
@@ -27,13 +25,14 @@ const respondJSONMeta = (request, response, status) => {
 const getUsers = (request, response) => {
     const responseJSON = {
         message: savedMaps,
-        returnValue: 1,
+        returnValue: 2,
     };
 
     //Return this value if nothing was saved yet
     if(Object.keys(savedMaps).length === 0)
     {
         responseJSON.message = 'There are currently no saved maps.';
+        responseJSON.returnValue = 0;
         return respondJSON(request, response, 400, responseJSON);
     }
 
@@ -115,14 +114,14 @@ const searchMaps = (request, response, params) => {
     //If there is nothing in the search box
     if(searchQuery === "")
     {
-        responseJSON.message = 'Please fill in the field before searching';
+        responseJSON.message = 'Please fill in the field before searching.';
         responseCode = 400;
     }
 
     //If no maps correlating to the data can be found
     if(Object.keys(searchedMaps).length === 0)
     {
-        responseJSON.message = `No maps found with '${searchQuery}' under '${searchType}'`;
+        responseJSON.message = `No maps found with '${searchQuery}' under '${searchType}'.`;
         responseCode = 404;
     }
 
@@ -160,7 +159,7 @@ const lookFor = (searchType, searchQuery) => {
         if(checking.includes(searchQuery))
         {  
             //Write the data as a string for easy parsing
-            mapsFound[searchedNumber] = `Map Name: ${elem.mapName}|Enemies: ${elem.enemies}|Easter Eggs: ${elem.easterEggs}|Perks: ${elem.perks}|Wonder Weapons: ${elem.wonderWeapons}`;
+            mapsFound[searchedNumber] = `Map Name: ${elem.mapName}|Name Translation: ${elem.nameTranslation}|Location: ${elem.location}|Date: ${elem.date}|Enemies: ${elem.enemies}|Easter Eggs: ${elem.easterEggs}|Perks: ${elem.perks}|Wonder Weapons: ${elem.wonderWeapons}`;
             //Increment the count of searchedNumber to fill in any future indexes
             searchedNumber += 1;
         }
@@ -193,6 +192,9 @@ const commentMap = (request, response, params) => {
     //Default status code
     let responseCode = 204;
 
+    let currentName = JSON.stringify(currentMap);
+    currentName = currentName.substring(currentName.indexOf(':') + 1, currentName.indexOf('(') - 1);
+
     //If the user doesn't exist, set a new code and create an empty user
     if(!savedMaps[params.comment]) {
         responseCode = 201;
@@ -200,13 +202,13 @@ const commentMap = (request, response, params) => {
     }
 
     //Add the fields for this user
-    savedMaps[params.comment].map = currentMap.mapName;
-    savedMaps[params.comment].comment = savedMaps.comment;
+    savedMaps[params.comment].comment = params.comment;
+    savedMaps[params.comment].map = currentName;
 
     //If the response is create, we create a message
     if(responseCode === 201)
     {
-        responseJSON.message = 'Created Successfully';
+        responseJSON.message = 'Map Saved';
         return respondJSON(request, response, responseCode, responseJSON);
     }
 
@@ -217,8 +219,8 @@ const commentMap = (request, response, params) => {
 const changeIndex = (request, response, value) => {
     //If no map was found yet, tell the user to do so
     const responseJSON = {
-        message: "Please search for maps before going through the indexes.",
-        returnValue: 0,
+        message: 'Please search for maps before going through the indexes.',
+        returnValue: 1,
     };
 
     //Check if the user searched for a map before commenting
@@ -240,6 +242,7 @@ const changeIndex = (request, response, value) => {
 
     //Return the new index of the array
     currentMap = searchedMaps[searchIndex];
+    currentName = currentMap.mapName;
     responseJSON.message = currentMap;
 
     //Default response code

@@ -21,14 +21,14 @@ html, body {
 }
 
 #instructions {
-  margin-top: 200px;
+  margin-top: 50px;
   margin-left: 100px;
   margin-right: 100px;
   text-align: left;
 }
 
-#mapForm {
-  margin-top: 50px;
+#mapForm, #commentForm, #userForm {
+  margin-top: 20px;
 }
 
 #searchResults {
