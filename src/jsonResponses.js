@@ -49,10 +49,19 @@ const notReal = (request, response) => {
     respondJSON(request, response, 404, responseJSON);
 };
 
-//Go through all of the maps and find the ones according to the search
-const lookFor = (searchType, searchQuery) => {
-    let mapsFound = {};
+//Search for the data accordingly
+const searchMaps = (request, response, params) => {
+    //Reset the searched array if it was previously filled
+    searchedMaps = {};
+    searchedNumber = 0;
+    searchIndex = 0;
 
+    //Parse the params to get the right information
+    let searchType = params.slice(params.indexOf('=') + 1, params.lastIndexOf("&")); //The type of data being searched
+    let searchQuery = params.substring(params.lastIndexOf("=") + 1); //Whatever the user has typed in the bar
+
+    //Checks for the maps by the right parameters and saves them in an array
+    //searchedMaps = lookFor(searchType, searchQuery);
     mapData.forEach((elem) => {
         //Go through each of the maps by the corresponding type, and search for the inputed searched term
         let checking;
@@ -79,28 +88,12 @@ const lookFor = (searchType, searchQuery) => {
         if(checking.includes(searchQuery))
         {  
             //Write the data as a string for easy parsing
-            mapsFound[searchedNumber] = `Map Name: ${elem.mapName} {${elem.nameTranslation}}|Location: ${elem.location}|Date: ${elem.date}|Enemies: ${elem.enemies}|Easter Eggs: ${elem.easterEggs}|Perks: ${elem.perks}|Wonder Weapons: ${elem.wonderWeapons}`;
+            searchedMaps[searchedNumber] = `Map Name: ${elem.mapName} {${elem.nameTranslation}}|Location: ${elem.location}|Date: ${elem.date}|Enemies: ${elem.enemies}|Easter Eggs: ${elem.easterEggs}|Perks: ${elem.perks}|Wonder Weapons: ${elem.wonderWeapons}`;
             //Increment the count of searchedNumber to fill in any future indexes
             searchedNumber += 1;
         }
     })
 
-    return mapsFound;
-}
-
-//Search for the data accordingly
-const searchMaps = (request, response, params) => {
-    //Reset the searched array if it was previously filled
-    searchedMaps = {};
-    searchedNumber = 0;
-    searchIndex = 0;
-
-    //Parse the params to get the right information
-    let searchType = params.slice(params.indexOf('=') + 1, params.lastIndexOf("&")); //The type of data being searched
-    let searchQuery = params.substring(params.lastIndexOf("=") + 1); //Whatever the user has typed in the bar
-
-    //Checks for the maps by the right parameters and saves them in an array
-    searchedMaps = lookFor(searchType, searchQuery);
     currentMap = searchedMaps[0];
 
     //Default response method
