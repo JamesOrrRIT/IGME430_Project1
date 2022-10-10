@@ -5,11 +5,10 @@
             "nameTranslation": "German - Night of the Dead",
             "location": "Abandoned Airfield, German Occupied Europe",
             "date": "June 4th, 1945",
-            "multiplayerMap": "Airfield",
             "enemies": "Zombies",
             "easterEggs": "N/A",
             "perks": "N/A",
-            "wonderWeapons": "N/A"
+            "wonderWeapons": "Ray Gun (Debut)"
         },
         
         {
@@ -17,11 +16,10 @@
             "nameTranslation": "German - Crazy / Insane",
             "location": "Wittenau Sanatorium, Berlin",
             "date": "September 6th, 1945",
-            "multiplayerMap": "Asylum",
             "enemies": "Zombies",
             "easterEggs": "N/A",
             "perks": "Juggernog (Debut), Quick Revive (Debut), Speed Cola (debut), Double Tap Root Beer (Debut)",
-            "wonderWeapons": "N/A"
+            "wonderWeapons": "Ray Gun"
         }, 
 
         {
@@ -29,11 +27,10 @@
             "nameTranslation": "Japanese - Swamp of Death",
             "location": "Rising Sun Facility, Empire of Japan",
             "date": "October 21th, 1945",
-            "multiplayerMap": "Knee Deep",
             "enemies": "Zombies, Hellhounds",
             "easterEggs": "N/A",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer",
-            "wonderWeapons": "Wunderwaffe DG-2 (Debut)"
+            "wonderWeapons": "Ray Gun, Wunderwaffe DG-2 (Debut)"
         },
 
         {
@@ -41,11 +38,10 @@
             "nameTranslation": "German - The Giant",
             "location": "Waffenfabrik Der Riese, Lower Silesia",
             "date": "October 28th, 1945",
-            "multiplayerMap": "Nightfire",
             "enemies": "Zombies, Hellhounds",
             "easterEggs": "Fly Trap",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer",
-            "wonderWeapons": "Wunderwaffe DG-2"
+            "wonderWeapons": "Ray Gun, Wunderwaffe DG-2"
         },
 
         {
@@ -53,11 +49,10 @@
             "nameTranslation": "German - Cinema/Theater of the Dead",
             "location": "Deutsches sol Kino, West Berlin",
             "date": "October 28th, 1963",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Hellhounds, Nova Crawlers",
             "easterEggs": "N/A",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer",
-            "wonderWeapons": "Wunderwaffe DG-2"
+            "wonderWeapons": "Ray Gun, Wunderwaffe DG-2, Thunder Gun (Debut)"
         },
 
         {
@@ -65,11 +60,10 @@
             "nameTranslation": "N/A",
             "location": "The Pentagon, Arlington Virginia",
             "date": "November 6th, 1963",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Hellhounds, The Pentagon Thief",
             "easterEggs": "N/A",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer",
-            "wonderWeapons": "Winter's Howl (Debut)"
+            "wonderWeapons": "Ray Gun, Winter's Howl (Debut)"
         },
 
         {
@@ -77,11 +71,10 @@
             "nameTranslation": "N/A",
             "location": "Baikonur Cosmodrome, Kyzylorda, Kazakh Soviet Socialist Republic",
             "date": "November 6th, 1963",
-            "multiplayerMap": "Launch",
             "enemies": "Zombies, Space Monkeys",
             "easterEggs": "N/A",
             "perks": "Juggernog, Quick Revive, Speed Cola, PhD Flopper (Debut), Stamin-Up (Debut)",
-            "wonderWeapons": "Winter's Howl"
+            "wonderWeapons": "Ray Gun"
         },
 
         {
@@ -89,11 +82,10 @@
             "nameTranslation": "N/A",
             "location": "Near Podkamennaya Tunguska River, Krasnoyarsk Krai, Russian Federation",
             "date": "March 7th, 2011",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Electric Zombies, George Romero",
             "easterEggs": "Stand-In",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer, PhD Flopper, Stamin-Up, Deadshot Daiquiri (Debut)",
-            "wonderWeapons": "V-R11 (Debut)"
+            "wonderWeapons": "Ray Gun, V-R11 (Debut)"
         },
 
         {
@@ -101,7 +93,6 @@
             "nameTranslation": "Paradise",
             "location": "A mountain range somewhere in Himalayas",
             "date": "April 25th, 1956",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Zombie Monkeys, Napalm Zombies, Shrieker Zombies",
             "easterEggs": "Time Travel Will Tell",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer, PhD Flopper, Stamin-Up, Deadshot Daiquiri",
@@ -113,7 +104,6 @@
             "nameTranslation": "N/A",
             "location": "Area 51, Nevada / Griffin Station",
             "date": "October 13th, 2025",
-            "multiplayerMap": "Portion of Hangar 18 and Remnant",
             "enemies": "Zombies, Hellhounds, Nova Crawlers, The Astronaut",
             "easterEggs": "Richtofen's Grand Scheme",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap Root Beer, PhD Flopper, Stamin-Up, Deadshot Daiquiri, Mule Kick (Debut)",
@@ -125,7 +115,6 @@
             "nameTranslation": "N/A",
             "location": "Hanford, Washington, U.S.A.",
             "date": "October 21st, 2035",
-            "multiplayerMap": "Elements of Remnant",
             "enemies": "Zombies, Naplam Zombies, Avogardo, Denizens",
             "easterEggs": "Tower of Babble",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap 2.0 (Debut), Stamin-Up, Tombstone Sode (Debut)",
@@ -137,11 +126,10 @@
             "nameTranslation": "N/A",
             "location": "Nuketown, Nevada",
             "date": "October 13th, 2025",
-            "multiplayerMap": "Nuketown",
             "enemies": "Zombies",
             "easterEggs": "N/A",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap 2.0",
-            "wonderWeapons": "Ray Gun, Ray Gun Mk II"
+            "wonderWeapons": "Ray Gun"
         },
 
         {
@@ -149,11 +137,10 @@
             "nameTranslation": "N/A",
             "location": "Shanghai collided with Province 22, People's Republic of China",
             "date": "October 22nd, 2035",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Jumping Jacks",
             "easterEggs": "High Maintenance",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap 2.0, Mule Kick, Who's Who (Debut)",
-            "wonderWeapons": "Sliquifier"
+            "wonderWeapons": "Sliquifier (Debut)"
         },
 
         {
@@ -161,11 +148,10 @@
             "nameTranslation": "N/A",
             "location": "Alcatraz Island and the Golden Gate Bridge",
             "date": "December 31st, 1933",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Brutus, Albert / Michael, Salvatore, and Billy",
             "easterEggs": "Pop Goes the Weasel",
-            "perks": "Juggernog, Speed Cola, Double Tap 2.0, Deadshot Daiquiri, Electric Cherry",
-            "wonderWeapons": "Blundergat, Acidgat"
+            "perks": "Juggernog, Speed Cola, Double Tap 2.0, Deadshot Daiquiri, Electric Cherry (Debut)",
+            "wonderWeapons": "Blundergat (Debut), Acidgat (Debut)"
         },
 
         {
@@ -173,11 +159,10 @@
             "nameTranslation": "N/A",
             "location": "Livingstone Mine and Calico, Namibe, Angola",
             "date": "December 31st, 2035",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Ghosts, Edward Richtofen",
             "easterEggs": "Mined Games",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap 2.0, Mule Kick, Stamin-Up, Vulture Aid (Debut)",
-            "wonderWeapons": "Paralyser"
+            "wonderWeapons": "Ray Gun Mk II (Debut), Paralyser (Debut)"
         },
 
         {
@@ -185,11 +170,10 @@
             "nameTranslation": "N/A",
             "location": "Excavation Site 64, Northern France",
             "date": "June 4th, 1918",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Templar Zombies, Panzersoldats",
             "easterEggs": "Little Lost Girl",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap 2.0, Mule Kick, Stamin-Up, PhD Flopper, Electric Cherry, Deadshot Daiquiri",
-            "wonderWeapons": "Staffs of Fire, Lightning, Ice, and Wind"
+            "wonderWeapons": "Staffs of Fire, Lightning, Ice, and Wind (Debut)"
         },
 
         {
@@ -197,11 +181,10 @@
             "nameTranslation": "N/A",
             "location": "Morg City, United States of America",
             "date": "April 25th, 1944",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Margwas, Parasites, Insanity Elementals, Keepers, Shadowman",
             "easterEggs": "Apocalypse Averted",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap 2.0, Mule Kick, Stamin-Up, Widow's Wine (Debut)",
-            "wonderWeapons": "Apothican Servant, Apothican / Reborn Sword"
+            "wonderWeapons": "Apothican Servant (Debut), Apothican / Reborn Sword (Debut)"
         },
 
         {
@@ -209,11 +192,10 @@
             "nameTranslation": "N/A",
             "location": "Waffenfabrik Der Riese, Lower Silesia, near Breslau, Germany",
             "date": "October 13th, 1945",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Hellhounds",
             "easterEggs": "Fly Trap",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap 2.0, Mule Kick, Stamin-Up, Deadshot Daiquiri",
-            "wonderWeapons": "Wunderwaffe DG-2, Annihilator"
+            "wonderWeapons": "Wunderwaffe DG-2, Annihilator (Debut)"
         },
 
         {
@@ -221,11 +203,10 @@
             "nameTranslation": "German - The Iron Dragon",
             "location": "Griffin Castle (Eagle's nest), Werfen, Salzburg, Austria",
             "date": "November 5th, 1945",
-            "multiplayerMap": "Infection",
             "enemies": "Zombies, Hellhounds, Panzersoldats, Electrified Zombies, Naplam Zombies, Skeletons, Giant Keeper",
-            "easterEggs": "My Borther's Keeper",
+            "easterEggs": "My Brother's Keeper",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap 2.0, Mule Kick, Stamin-Up, Electric Cherry, Deadshot Daiquiri, Widow's Wine",
-            "wonderWeapons": "Ragnarok DG-4, Wrath of the Ancients, Storm, Demon Gate, Rune Prison, Wolf Howl"
+            "wonderWeapons": "Ragnarok DG-4 (Debut), Wrath of the Ancients, Storm, Demon Gate, Rune Prison, Wolf Howl (Debut)"
         },
 
         {
@@ -233,11 +214,10 @@
             "nameTranslation": "Japanese - Island of Despair",
             "location": "Division 9 Facility, Ponape (Pohnpei Island, Japanese-occupied Micronesia)",
             "date": "October 18th, 1945",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Thrashers, Spiders, Keepers, Giant Spider, Giant Thrasher",
             "easterEggs": "Seeds of Doubt",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap 2.0, Mule Kick, Stamin-Up, Electric Cherry, Deadshot Daiquiri, Widow's Wine",
-            "wonderWeapons": "KT-4, Skull of Nana Sapwe"
+            "wonderWeapons": "KT-4 (Debut), Skull of Nana Sapwe (Debut)"
         },
 
         {
@@ -245,11 +225,10 @@
             "nameTranslation": "Russian - City of Blood",
             "location": "Stalingrad, Stalingrad Oblast, Russian Soviet Federative Socialist Republic",
             "date": "November 6th, 1945",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Electrified Zombies, Naplam Zombies, Manglers, Valkyrie Drones, Dragons, Modified Manticore Mech",
             "easterEggs": "Love and War",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap 2.0, Mule Kick, Stamin-Up, Electric Cherry, Deadshot Daiquiri, Electric Cherry, Widow's Wine",
-            "wonderWeapons": "GKZ-45 Mk3, Gauntlet of Siegfried"
+            "wonderWeapons": "GKZ-45 Mk3 (Debut), Gauntlet of Siegfried (Debut)"
         },
 
         {
@@ -257,7 +236,6 @@
             "nameTranslation": "N/A",
             "location": "'The House' Remains, Agartha",
             "date": "Sometime after 'The Arrival of Primis'",
-            "multiplayerMap": "Elements of Infection",
             "enemies": "Zombies, Margwas, Panzersoldats, Spiders, Parasites, Cursed Keepers, Furies, Shadowman",
             "easterEggs": "A Better Tomorrow",
             "perks": "Juggernog, Quick Revive, Speed Cola, Double Tap 2.0, Mule Kick, Stamin-Up, Electric Cherry, Deadshot Daiquiri, Electric Cherry, Widow's Wine",
@@ -265,15 +243,102 @@
         },
 
         {
+            "mapName": "Voyage of Despair (Black Ops 4)",
+            "nameTranslation": "N/A",
+            "location": "RMS Titanic",
+            "date": "April 14th 1912",
+            "enemies": "Zombies, Catalysts, Stokers, Blightfathers, Eye of Odin",
+            "easterEggs": "Abandon Ship",
+            "perks": "BO4 Customizable Perk mechanic (Debut)",
+            "wonderWeapons": "Kraken (Debut), Homonculus (Debut)"
+        },
+
+        {
+            "mapName": "IX (Black Ops 4)",
+            "nameTranslation": "Roman Numerals - Nine",
+            "location": "Egypt, Roman Empire",
+            "date": "89 - 80 B.C.",
+            "enemies": "Zombies, Catalysts, Zombie Tigers, Destroyers, Marauders, Blightfathers, Fury, Wrath",
+            "easterEggs": "Venerated Warrior",
+            "perks": "BO4 Customizable Perk mechanic",
+            "wonderWeapons": "Homonculus, Death of Orion (Debut)"
+        },
+
+        {
+            "mapName": "Blood of The Dead (Black Ops 4)",
+            "nameTranslation": "N/A",
+            "location": "Alcatraz Island, San Francisco",
+            "date": "July 4th 1941",
+            "enemies": "Zombies, Hellhounds, Warden",
+            "easterEggs": "Most Escape Alive",
+            "perks": "BO4 Customizable Perk mechanic",
+            "wonderWeapons": "Ray Gun, Ray Gun Mk II, Blundergat, Acidgat, Magmagat (Debut)"
+        },
+
+        {
+            "mapName": "Classified (Black Ops 4)",
+            "nameTranslation": "N/A",
+            "location": "The Pentagon, Arlington, Virginia",
+            "date": "Between November 2nd 1963 and November 6th 1963",
+            "enemies": "Zombies, Nova Crawlers, Hellhounds",
+            "easterEggs": "Cold War Remedy",
+            "perks": "BO4 Customizable Perk mechanic",
+            "wonderWeapons": "Ray Gun, Ray Gun Mk II, Winter's Howl"
+        },
+
+        {
+            "mapName": "Dead of The Night (Black Ops 4)",
+            "nameTranslation": "N/A",
+            "location": "Rhodes Manor, Hampshire, England",
+            "date": "March 20th 1912",
+            "enemies": "Zombies, Catalysts, Nosferatus, Crimson Nosferatus, Werewolves, Ahdow Werewolf",
+            "easterEggs": "Trial by Ordeal",
+            "perks": "BO4 Customizable Perk mechanic",
+            "wonderWeapons": "Alistairs Folly (Debut), Savage Impaler, Homunculus"
+        },
+
+        {
+            "mapName": "Ancient Evil (Black Ops 4)",
+            "nameTranslation": "N/A",
+            "location": "Delphi, Greece",
+            "date": "Sometime after April 15th 1912",
+            "enemies": "Zombies, Catalysts, Spartoi, Gegenees, Blightfathers, Corrupted Pegasus, Zombie Warlord",
+            "easterEggs": "Greek Tragedy",
+            "perks": "BO4 Customizable Perk mechanic",
+            "wonderWeapons": "Homonculus, Hands of Gaia, Charon, Hemera, and Ouranos (Debut)"
+        },
+
+        {
+            "mapName": "Alpha Omega (Black Ops 4)",
+            "nameTranslation": "N/A",
+            "location": "Camp Edward, Nevada",
+            "date": "October 13th 2025",
+            "enemies": "Zombies, Jolting Jacks, Nova 6 Bombers, Lightning Hounds, A.D.A.M.s, Avogadro",
+            "easterEggs": "Electromagnetic Awakening Party",
+            "perks": "BO4 Customizable Perk mechanic",
+            "wonderWeapons": "Ray Gun, Ray Gun Mk II, Ray Gun Mk II-V, II-X, II-Y, II-Z (Debut)"
+        },
+
+        {
+            "mapName": "Tag der Toten (Black Ops 4)",
+            "nameTranslation": "German - Day of the Dead",
+            "location": "Near Podkamennaya Tunguska River, Krasnoyarsk Krai, Soviet Union",
+            "date": "1965",
+            "enemies": "Zombies, Hellhounds, Napalm Zombies, Electrified Zombies",
+            "easterEggs": "Salvation Lies Above",
+            "perks": "BO4 Customizable Perk mechanic",
+            "wonderWeapons": "Ray Gun, Ray Gun Mk II, Thundergun, Tundragun (Debut), Wunderwaffe DG-Scharfschütze (Debut)"
+        },
+
+        {
             "mapName": "Die Maschine (Black Ops Cold War)",
             "nameTranslation": "German - The Machine",
             "location": "Projekt Endstation Facility, Morasko, Poland",
             "date": "November 13th, 1983'",
-            "multiplayerMap": "N/A",
             "enemies": "Zombies, Heavy Zombies, Plaguehounds, Megatons",
             "easterEggs": "Seal the Deal",
             "perks": "Juggernog, Quick Revive, Speed Cola, Stamin-Up, Elemental Pop (Debut), Deadshot Daiquiri 2.0 (Debut)",
-            "wonderWeapons": "D.I.E. Machine (Shockwave, NOVA-5, Cryo-Emitter, Electrobolt, Thermophasic)"
+            "wonderWeapons": "D.I.E. Machine (Shockwave, NOVA-5, Cryo-Emitter, Electrobolt, Thermophasic) (Debut)"
         },
 
         {
@@ -281,11 +346,10 @@
             "nameTranslation": "N/A",
             "location": "Omega Outpost 25, A Shau Valley, Socialist Republic of Vietnam",
             "date": "Sometime after 'The Arrival of Primis",
-            "multiplayerMap": "June 15th, 1984",
             "enemies": "Zombies, Armored Zombies, Heavy Zombies, Hellhounds, Mimics, Mangers, Ordas",
             "easterEggs": "Maxis Potential",
             "perks": "Juggernog, Quick Revive, Speed Cola, Stamin-Up, Elemental Pop, Deadshot Daiquiri 2.0, Tombstone Soda",
-            "wonderWeapons": "RAI K-84"
+            "wonderWeapons": "RAI K-84 (Debut)"
         },
 
         {
@@ -293,7 +357,6 @@
             "nameTranslation": "N/A",
             "location": "Ural Mountains, Soviet Union / Adrar Province, Algeria, North Africa / North Atlantic Ocean",
             "date": "Between June 20th and December 14th, 1984 (pre-Mauer der Toten) March 12th, 1985 (post-Mauer der Toten)",
-            "multiplayerMap": "Golova, Ruka, Alpine, Santaorium, Duga, Zoo, Collateral, Armada",
             "enemies": "Zombies, Armored Zombies, Heavy Zombies, Hellhounds, Plaguehounds, Mimics, Manglers, Tempests, Disciples, Megatons, Kransysoldats, Demented Echoes, Ordas, Legion, Abominations",
             "easterEggs": "Ravenov Implications, Entrapment",
             "perks": "Juggernog, Quick Revive, Speed Cola, Stamin-Up, Elemental Pop, Deadshot Daiquiri 2.0, Tombstone Soda",
@@ -305,11 +368,10 @@
             "nameTranslation": "German - Wall of the Dead",
             "location": "'East Berlin, East Germany",
             "date": "February 2nd, 1985",
-            "multiplayerMap": "U-Bahn",
             "enemies": "Zombies, Armored Zombies, Heavy Zombies, Tormentors, Disciples, Tempests, Manglers, Mimics, Megatons, Kransysoldats, Aleksandra Valentina",
-            "easterEggs": "Tine Man's Heart",
+            "easterEggs": "Tin Man's Heart",
             "perks": "Juggernog, Quick Revive, Speed Cola, Stamin-Up, Elemental Pop, Deadshot Daiquiri 2.0, Tombstone Soda, Death Perception (Debut)",
-            "wonderWeapons": "CRBR-S"
+            "wonderWeapons": "CRBR-S (Debut)"
         },
 
         {
@@ -317,11 +379,10 @@
             "nameTranslation": "N/A",
             "location": "Test Site Anna, Zakarpatska Oblast, Ukrainian SSR, Soviet Union",
             "date": "June 4th, 1985",
-            "multiplayerMap": "Armerika",
             "enemies": "Zombies, Armored Zombies, Heavy Zombies, Plaguehounds, Tormentors, Tempests, Mimics, Manglers, Disciples, Abominations, Kransysoldats, The Forsaken",
             "easterEggs": "Pyrrhic Victory",
             "perks": "Juggernog, Quick Revive, Speed Cola, Stamin-Up, Elemental Pop, Deadshot Daiquiri 2.0, Tombstone Soda, Death Perception, PhD Slider (Debut)",
-            "wonderWeapons": "Chrysalax"
+            "wonderWeapons": "Chrysalax (Debut)"
         }
     ]
 }

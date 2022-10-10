@@ -7,6 +7,7 @@ let savedMaps = {};
 let currentMap = {};
 
 let searchIndex = 0;
+let savedNumber = 0;
 
 //Function to respond to the json object with the request, response, status code, and object
 const respondJSON = (request, response, status, object) => {
@@ -22,7 +23,7 @@ const respondJSONMeta = (request, response, status) => {
 }
 
 //Return the user object as json
-const getUsers = (request, response) => {
+const getMaps = (request, response) => {
     const responseJSON = {
         message: savedMaps,
         returnValue: 2,
@@ -80,7 +81,7 @@ const lookFor = (searchType, searchQuery) => {
         if(checking.includes(searchQuery))
         {  
             //Write the data as a string for easy parsing
-            mapsFound[searchedNumber] = `Map Name: ${elem.mapName} (${elem.nameTranslation})|Location: ${elem.location}|Date: ${elem.date}|Enemies: ${elem.enemies}|Easter Eggs: ${elem.easterEggs}|Perks: ${elem.perks}|Wonder Weapons: ${elem.wonderWeapons}`;
+            mapsFound[searchedNumber] = `Map Name: ${elem.mapName} {${elem.nameTranslation}}|Location: ${elem.location}|Date: ${elem.date}|Enemies: ${elem.enemies}|Easter Eggs: ${elem.easterEggs}|Perks: ${elem.perks}|Wonder Weapons: ${elem.wonderWeapons}`;
             //Increment the count of searchedNumber to fill in any future indexes
             searchedNumber += 1;
         }
@@ -171,6 +172,7 @@ const commentMap = (request, response, params) => {
     if(responseCode === 201)
     {
         responseJSON.message = 'Map Saved';
+        savedNumber += 1;
         return respondJSON(request, response, responseCode, responseJSON);
     }
 
@@ -186,7 +188,7 @@ const changeIndex = (request, response, value) => {
     };
 
     //Check if the user searched for a map before commenting
-    if(Object.keys(searchedMaps).length === 0 || Object.keys(searchedMaps).length === 1)
+    if(Object.keys(searchedMaps).length === 0)
     {
         respondJSON(request, response, 400, responseJSON);
     }
@@ -214,7 +216,7 @@ const changeIndex = (request, response, value) => {
 
 //Set out the functions for public use
 module.exports = {
-    getUsers,
+    getMaps,
     notReal,
     searchMaps,
     commentMap,

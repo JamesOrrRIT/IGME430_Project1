@@ -44,8 +44,8 @@ const handleGet = (request, response, parsedUrl) => {
   else if (parsedUrl.pathname === '/style.css') {
     htmlHandler.getCSS(request, response);
   } 
-  else if (parsedUrl.pathname === '/getUsers') {
-    jsonHandler.getUsers(request, response);
+  else if (parsedUrl.pathname === '/getMaps') {
+    jsonHandler.getMaps(request, response);
   } 
   else if (parsedUrl.pathname === '/searchMaps') {
     jsonHandler.searchMaps(request, response, parsedUrl.href);

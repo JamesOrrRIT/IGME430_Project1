@@ -229,21 +229,23 @@
 <body>
   <section id="top">
     <img src="../images/zombiesPageHeader.png" alt="Page Header" width="100%" height="200px">
+    <h1>James Orr's Call of Duty Zombies API</h1>
     <form id="instructions">
-      <h3>This form is going to be used to load a JSON file containing data on maps from the Call of Duty Zombie series. The file lists off multiple maps from throughout the games and various aspects about them. I will attempt to do the following with this:</h3>
+      <h3>This form is going to be used to load a JSON file containing data on maps from the Call of Duty Zombies series. The file lists off multiple maps from throughout the games and various aspects about them. This project is a follow up to the HTTP API assignments I've been doing and will perform the following:</h3>
       <ul>
         <li>Parse the file and break down each map based on what the user wants to look for.</li>
         <li>The search is done with a dropdown menu that will look through a designated component (name, enemy types, etc.)</li>
-        <li>I will attempt to carry over the buttons from my other API projects which will display one search at a time and the user can scroll through them with a 'prev' and 'next' button.</li>
+        <li>Data found that contains the user's search query will be shown one at a time with two buttons to scroll through each instance found.</li>
+        <li>Users can leave a comment on a map that will be saved to another array and can be pulled up to review. Data can be overriden if desired.</li>
       </ul>
 
-      <h3>This is how I will use the status codes:</h3>
+      <h3>The following status codes returned by the search functions:</h3>
       <ul>
-        <li>200: Retieve any saved maps added to the array</li>
-        <li>201: Called when the map is added to the array when it is first searched</li>
-        <li>204: Called when the map selected is already added to the array</li>
-        <li>400: Called when the search paramter is empty</li>
-        <li>404: Called when the server can't return what was searched</li>
+        <li>200: Retieve any saved maps from the specific array</li>
+        <li>201: Called when a map is firs searched, when the user moves through the search results, and when the map is saved to the array</li>
+        <li>204: Called when the map selected is already part of the saved array, which will update the data inside</li>
+        <li>400: Called when the search paramter or comment field are empty for their specific calls</li>
+        <li>404: Called when the server can't return what was searched or if the user retrieves the saved array before adding any maps</li>
       </ul>
 
       <h3>When searching, please keep these in mind:</h3>
@@ -251,6 +253,7 @@
         <li>Search only by using a single word, and make sure you use the right aspect of the map from the dropdown menu.</li>
         <li>When using that one word, make sure to use upper case where it would be appropriate.</li>
         <li>Maps have a unique aspect when going through their names. Typing in 'World', '1', '2', '3', '4', or 'Cold' will display all the maps from World at War, Black Ops 1-4, and Cold War respectively.</li>
+        <li>The maps listed will only use their original appearances, so none of the remakes such as those in Zombies Chronicles will be included.</li>
         <li>Perks and Wonder Weapons also have a unique search. Typing in 'Debut' will show the first maps where a new perk or weapon are introduced.</li>
         <li>This project is only using maps created by the original developers, Treyarch. Maps from Infinite Warfare and World War 2 are not included, and neither are the maps from Vanguard as they are still being developed.</li>
       </ul>
@@ -277,16 +280,16 @@
       <input type="submit" value="Comment">
     </form>
 
-    <form id="userForm" action="/getUsers" method="get">
+    <form id="userForm" action="/getMaps" method="get">
       <select id='urlField'>
-        <option value='/getUsers'>/getUsers</option>
+        <option value='/getMaps'>/getMaps</option>
         <option value='/notReal'>/notReal</option>
       </select>
       <select id="methodSelect">
         <option value="get">GET</option>
         <option value="head">HEAD</option>
       </select>
-      <input type="submit" value="Get User" />
+      <input type="submit" value="Get Maps"/>
     </form>
 
     <form id="prevForm" action="/prevIndex" method="get">
