@@ -7,7 +7,6 @@ let savedMaps = {};
 let currentMap = {};
 
 let searchIndex = 0;
-let savedNumber = 0;
 
 //Function to respond to the json object with the request, response, status code, and object
 const respondJSON = (request, response, status, object) => {
@@ -122,7 +121,7 @@ const searchMaps = (request, response, params) => {
     }
 
     //If no maps correlating to the data can be found
-    if(Object.keys(searchedMaps).length == 0)
+    if(Object.keys(searchedMaps).length === 0)
     {
         responseJSON.message = `No maps found with '${searchQuery}' under '${searchType}'.`;
         responseCode = 404;
@@ -172,7 +171,6 @@ const commentMap = (request, response, params) => {
     if(responseCode === 201)
     {
         responseJSON.message = 'Map Saved';
-        savedNumber += 1;
         return respondJSON(request, response, responseCode, responseJSON);
     }
 
