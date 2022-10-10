@@ -53,8 +53,7 @@ const notReal = (request, response) => {
 const lookFor = (searchType, searchQuery) => {
     let mapsFound = {};
 
-    for(const elem of mapData)
-    {
+    mapData.forEach((elem) => {
         //Go through each of the maps by the corresponding type, and search for the inputed searched term
         let checking;
 
@@ -84,7 +83,7 @@ const lookFor = (searchType, searchQuery) => {
             //Increment the count of searchedNumber to fill in any future indexes
             searchedNumber += 1;
         }
-    }
+    })
 
     return mapsFound;
 }
